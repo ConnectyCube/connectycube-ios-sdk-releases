@@ -14,11 +14,29 @@ It provides a simple interface to the messaging, video calling (WebRTC), push no
 
 The ConnectyCube iOS SDK can be installed directly into your application by adding sdk libraries via CocoaPods.
 
-Run the following code into terminal:
+Make sure that you have [CocoaPods](http://cocoapods.org/) installed.
 
-```groovy
-pod install ...
+Open your Podfile and add following line for dynamic framework (iOS 8+):
+
 ```
+pod 'ConnectyCube'
+```
+
+Then add a "Run Script Phase" in build phases of your project. Past the following snippet in the script:
+
+```
+bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Connectycube.framework/strip-framework.sh"
+```
+
+This fixes a [known Apple bug](http://www.openradar.me/radar?id=6409498411401216), that does not allowing to publish archives to the App store with dynamic frameworks that contains simulator platforms. Script will only work for archiving.
+
+Then open **Terminal** go to your project folder with Podfile and run:
+
+```
+pod install
+```
+
+Now you can open **.xcworkspace** file and use ConnectyCube Framework in your project. 
 
 # Contact
 
