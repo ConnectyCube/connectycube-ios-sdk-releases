@@ -38,7 +38,7 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  Retrieve all Users for current account with extended request
  
  @param extendedRequest Dictionary with extended request
- @param responsePage Pagination parameters
+ @param paginator Pagination parameters
  @param successBlock Block with response, page and users instances if the request is succeeded
  @param errorBlock Block with response instance if the request is failed.
  
