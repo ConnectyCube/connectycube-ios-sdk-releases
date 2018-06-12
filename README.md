@@ -25,7 +25,7 @@ pod 'ConnectyCube'
 Then add a "Run Script Phase" in build phases of your project. Past the following snippet in the script:
 
 ```
-bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Connectycube.framework/strip-framework.sh"
+bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/ConnectyСube.framework/strip-framework.sh"
 ```
 
 This fixes a [known Apple bug](http://www.openradar.me/radar?id=6409498411401216), that does not allowing to publish archives to the App store with dynamic frameworks that contains simulator platforms. Script will only work for archiving.
