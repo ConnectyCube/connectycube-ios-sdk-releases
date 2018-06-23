@@ -18,13 +18,13 @@ Make sure that you have [CocoaPods](http://cocoapods.org/) installed.
 
 Open your Podfile and add following line for dynamic framework (iOS 8+):
 
-```
+``` ruby
 pod 'ConnectyCube'
 ```
 
 Then add a "Run Script Phase" in build phases of your project. Past the following snippet in the script:
 
-```
+``` bash
 bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/ConnectyСube.framework/strip-framework.sh"
 ```
 
@@ -32,7 +32,7 @@ This fixes a [known Apple bug](http://www.openradar.me/radar?id=6409498411401216
 
 Then open **Terminal** go to your project folder with Podfile and run:
 
-```
+``` bash
 pod install
 ```
 
