@@ -11,11 +11,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class CYBRequest;
 
+NS_SWIFT_NAME(TaskBlock)
 typedef void(^CYBTaskBlock)(NSURLSessionDataTask *task);
+NS_SWIFT_NAME(TaskDataBlock)
 typedef void(^CYBTaskDataBlock)(NSURLSessionDataTask *task, NSData *responseObject);
+NS_SWIFT_NAME(TaskErrorBlock)
 typedef void(^CYBTaskErrorBlock)(NSURLSessionDataTask * _Nullable task, NSError *error);
+NS_SWIFT_NAME(TaskProgressBlock)
 typedef void(^CYBTaskProgressBlock)(NSProgress *downloadProgress);
 
+/**
+ CYBHTTPClient class interface.
+ This class is designed to perform http requests to the endpoint.
+ */
 NS_SWIFT_NAME(HTTPClient)
 @interface CYBHTTPClient : NSObject
 
@@ -26,13 +34,14 @@ NS_SWIFT_NAME(HTTPClient)
  */
 @property (nonatomic, nullable) dispatch_queue_t completionQueue;
 
+// unavailable initializers
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
 
 /**
  Initializes an `CYBHTTPClient` object with the specified base URL.
  
- @param url The base URL for the HTTP client.
+ @param url The base URL for the HTTP client
  
  @return The newly-initialized HTTP client
  */
@@ -41,10 +50,10 @@ NS_SWIFT_NAME(HTTPClient)
 /**
  Initializes an `CYBHTTPClient` object with the specified base URL.
  
- This is the designated initializer.
+ @remark This is the designated initializer.
  
- @param url The base URL for the HTTP client.
- @param configuration The configuration used to create the managed session.
+ @param url The base URL for the HTTP client
+ @param configuration The configuration used to create the managed session
  
  @return The newly-initialized HTTP client
  */
@@ -54,11 +63,11 @@ NS_SWIFT_NAME(HTTPClient)
 /**
  Creates and runs an `CYBRequest` with a `GET` request.
  
- @param URLString The URL string used to create the request URL.
- @param parameters The parameters to be encoded according to the client request serializer.
- @param downloadProgress A block object to be executed when the download progress is updated. Note this block is called on the session queue, not the main queue.
- @param success A block object to be executed when the task finishes successfully. This block has no return value and takes two arguments: the data task, and the response object.
- @param failure A block object to be executed when the task finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a two arguments: the data task and the error describing the network or parsing error that occurred.
+ @param URLString The URL string used to create the request URL
+ @param parameters The parameters to be encoded according to the client request serializer
+ @param downloadProgress A block object to be executed when the download progress is updated. Note this block is called on the session queue, not the main queue
+ @param success A block object to be executed when the task finishes successfully. This block has no return value and takes two arguments: the data task, and the response object
+ @param failure A block object to be executed when the task finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a two arguments: the data task and the error describing the network or parsing error that occurred
  */
 - (CYBRequest *)GET:(NSString *)URLString
          parameters:(nullable id)parameters
@@ -69,10 +78,10 @@ NS_SWIFT_NAME(HTTPClient)
 /**
  Creates and runs an `CYBRequest` with a `HEAD` request.
  
- @param URLString The URL string used to create the request URL.
- @param parameters The parameters to be encoded according to the client request serializer.
- @param success A block object to be executed when the task finishes successfully. This block has no return value and takes a single arguments: the data task.
- @param failure A block object to be executed when the task finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a two arguments: the data task and the error describing the network or parsing error that occurred.
+ @param URLString The URL string used to create the request URL
+ @param parameters The parameters to be encoded according to the client request serializer
+ @param success A block object to be executed when the task finishes successfully. This block has no return value and takes a single arguments: the data task
+ @param failure A block object to be executed when the task finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a two arguments: the data task and the error describing the network or parsing error that occurred
  */
 - (CYBRequest *)HEAD:(NSString *)URLString
           parameters:(nullable id)parameters
@@ -82,11 +91,11 @@ NS_SWIFT_NAME(HTTPClient)
 /**
  Creates and runs an `CYBRequest` with a `POST` request.
  
- @param URLString The URL string used to create the request URL.
- @param parameters The parameters to be encoded according to the client request serializer.
- @param uploadProgress A block object to be executed when the upload progress is updated. Note this block is called on the session queue, not the main queue.
- @param success A block object to be executed when the task finishes successfully. This block has no return value and takes two arguments: the data task, and the response object created by the client response serializer.
- @param failure A block object to be executed when the task finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a two arguments: the data task and the error describing the network or parsing error that occurred.
+ @param URLString The URL string used to create the request URL
+ @param parameters The parameters to be encoded according to the client request serializer
+ @param uploadProgress A block object to be executed when the upload progress is updated. Note this block is called on the session queue, not the main queue
+ @param success A block object to be executed when the task finishes successfully. This block has no return value and takes two arguments: the data task, and the response object created by the client response serializer
+ @param failure A block object to be executed when the task finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a two arguments: the data task and the error describing the network or parsing error that occurred
  */
 - (CYBRequest *)POST:(NSString *)URLString
           parameters:(nullable id)parameters
@@ -97,10 +106,10 @@ NS_SWIFT_NAME(HTTPClient)
 /**
  Creates and runs an `CYBRequest` with a `PUT` request.
  
- @param URLString The URL string used to create the request URL.
- @param parameters The parameters to be encoded according to the client request serializer.
- @param success A block object to be executed when the task finishes successfully. This block has no return value and takes two arguments: the data task, and the response object created by the client response serializer.
- @param failure A block object to be executed when the task finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a two arguments: the data task and the error describing the network or parsing error that occurred.
+ @param URLString The URL string used to create the request URL
+ @param parameters The parameters to be encoded according to the client request serializer
+ @param success A block object to be executed when the task finishes successfully. This block has no return value and takes two arguments: the data task, and the response object created by the client response serializer
+ @param failure A block object to be executed when the task finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a two arguments: the data task and the error describing the network or parsing error that occurred
  */
 - (CYBRequest *)PUT:(NSString *)URLString
          parameters:(nullable id)parameters
@@ -110,10 +119,10 @@ NS_SWIFT_NAME(HTTPClient)
 /**
  Creates and runs an `CYBRequest` with a `PATCH` request.
  
- @param URLString The URL string used to create the request URL.
- @param parameters The parameters to be encoded according to the client request serializer.
- @param success A block object to be executed when the task finishes successfully. This block has no return value and takes two arguments: the data task, and the response object created by the client response serializer.
- @param failure A block object to be executed when the task finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a two arguments: the data task and the error describing the network or parsing error that occurred.
+ @param URLString The URL string used to create the request URL
+ @param parameters The parameters to be encoded according to the client request serializer
+ @param success A block object to be executed when the task finishes successfully. This block has no return value and takes two arguments: the data task, and the response object created by the client response serializer
+ @param failure A block object to be executed when the task finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a two arguments: the data task and the error describing the network or parsing error that occurred
  */
 - (CYBRequest *)PATCH:(NSString *)URLString
            parameters:(nullable id)parameters
@@ -123,10 +132,10 @@ NS_SWIFT_NAME(HTTPClient)
 /**
  Creates and runs an `CYBRequest` with a `DELETE` request.
  
- @param URLString The URL string used to create the request URL.
- @param parameters The parameters to be encoded according to the client request serializer.
- @param success A block object to be executed when the task finishes successfully. This block has no return value and takes two arguments: the data task, and the response object created by the client response serializer.
- @param failure A block object to be executed when the task finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a two arguments: the data task and the error describing the network or parsing error that occurred.
+ @param URLString The URL string used to create the request URL
+ @param parameters The parameters to be encoded according to the client request serializer
+ @param success A block object to be executed when the task finishes successfully. This block has no return value and takes two arguments: the data task, and the response object created by the client response serializer
+ @param failure A block object to be executed when the task finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes a two arguments: the data task and the error describing the network or parsing error that occurred
  */
 - (CYBRequest *)DELETE:(NSString *)URLString
             parameters:(nullable id)parameters

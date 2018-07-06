@@ -9,6 +9,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ CYBChatAttachment class interface.
+ This class represents attachment interface used for chat.
+ */
 NS_SWIFT_NAME(ChatAttachment)
 @interface CYBChatAttachment : NSObject <NSSecureCoding, NSCopying>
 
@@ -20,7 +24,7 @@ NS_SWIFT_NAME(ChatAttachment)
 /**
  Type of attachment.
  
- @discussion Can be any type. For example: audio, video, image, location, any other
+ @remark Can be any type. For example: audio, video, image, location, any other.
  */
 @property (nonatomic, copy, nullable) NSString *type;
 
@@ -34,14 +38,19 @@ NS_SWIFT_NAME(ChatAttachment)
  */
 @property (nonatomic, copy, nullable) NSString *ID;
 
+@end
 
-@property (nonatomic, strong, readonly, nullable) NSDictionary<NSString *, NSString *> *customParameters;
+@interface CYBChatAttachment(KeySubscripting)
 
-//MARK: Keyed subscripting for customParameters
+/**
+ Additional key value custom parameters.
+ */
+@property (nonatomic, readonly) NSMutableDictionary<NSString *, NSString *> *customParameters;
+
+// MARK: Keyed subscripting for customParameters
 
 - (nullable NSString *)objectForKeyedSubscript:(NSString *)key;
 - (void)setObject:(nullable NSString *)obj forKeyedSubscript:(NSString *)key;
 
 @end
-
 NS_ASSUME_NONNULL_END

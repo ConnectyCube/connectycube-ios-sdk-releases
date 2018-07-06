@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /** 
- `CYBCustomObject` class interface.
+ CYBCustomObject class interface.
  This class represents ConnectyCube custom object model.
  */
 NS_SWIFT_NAME(CustomObject)
@@ -34,7 +34,7 @@ NS_SWIFT_NAME(CustomObject)
 @property (nonatomic, strong, nullable) NSDate *createdAt;
 
 /** 
- The Date & time when record was updated
+ The Date & time when record was updated.
  */
 @property (nonatomic, strong, nullable) NSDate *updatedAt;
 
@@ -59,28 +59,31 @@ NS_SWIFT_NAME(CustomObject)
 @property (nonatomic, strong, nullable) CYBCustomObjectPermissions *permissions;
 
 /**
- Create new custom object with class name
+ Create new custom object with class name.
 
- @param className The class name of the custom object.
- @return New instance of CYBCustomObject.
+ @param className The class name of the custom object
+ 
+ @return New instance of CYBCustomObject
  */
 + (instancetype)objectWithClassName:(NSString *)className;
 
-//MARK: Keyed subscripting for fields
+// MARK: Keyed subscripting for fields
 
 /**
  Keyed subscripting for fields
  
- How to use:
- 
+ @code
      CYBCustomObject *obj = [CYBCustomObject objectWithClassName:@"Movie"];
      obj[@"name"] = @"Terminator";
      obj[@"description"] = @"Best movie ever!";
      obj[@"raiting"] = @"5";
+ @endcode
  */
 - (nullable id)objectForKeyedSubscript:(NSString *)key;
 
-/** Keyed subscripting for fields */
+/**
+ Keyed subscripting for fields.
+ */
 - (void)setObject:(nullable id)obj forKeyedSubscript:(NSString *)key;
 
 @end

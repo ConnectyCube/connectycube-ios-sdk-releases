@@ -10,10 +10,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 // Permissions access types
-extern NSString *const kCYBCustomObjectPermissionsAccessOpen;
-extern NSString *const kCYBCustomObjectkPermissionsAccessOwner;
-extern NSString *const kCYBCustomObjectPermissionsAccessOpenForUsersIDs;
-extern NSString *const kCYBCustomObjectPermissionsAccessOpenForGroups;
+extern NSString * const kCYBCustomObjectPermissionsAccessOpen NS_SWIFT_NAME(CustomObjectPermissionsAccessOpen);
+extern NSString * const kCYBCustomObjectkPermissionsAccessOwner NS_SWIFT_NAME(CustomObjectkPermissionsAccessOwner);
+extern NSString * const kCYBCustomObjectPermissionsAccessOpenForUsersIDs NS_SWIFT_NAME(CustomObjectPermissionsAccessOpenForUsersIDs);
+extern NSString * const kCYBCustomObjectPermissionsAccessOpenForGroups NS_SWIFT_NAME(CustomObjectPermissionsAccessOpenForGroups);
 
 typedef NS_ENUM(NSUInteger, CYBCustomObjectAggregationOperator) {
     
@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, CYBCustomObjectAggregationOperator) {
 } NS_SWIFT_NAME(CustomObjectAggregationOperator);
 
 typedef NS_ENUM(NSUInteger,  CYBCustomObjectPermissionsAccess) {
+    
     CYBCustomObjectPermissionsAccessOpen,
     CYBCustomObjectPermissionsAccessOwner,
     CYBCustomObjectPermissionsAccessNotAllowed,

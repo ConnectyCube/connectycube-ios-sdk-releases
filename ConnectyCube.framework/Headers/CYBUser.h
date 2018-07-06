@@ -17,17 +17,17 @@ NS_SWIFT_NAME(User)
 @interface CYBUser : NSObject <NSSecureCoding, NSCopying>
 
 /**
- The ID of the user
+ The ID of the user.
  */
 @property (nonatomic) NSUInteger ID;
 
 /**
- The Date and time when the user was created
+ The Date and time when the user was created.
  */
 @property (nonatomic) NSDate *createdAt;
 
 /**
- The Date and time when the user was updated
+ The Date and time when the user was updated.
  */
 @property (nonatomic) NSDate *updatedAt;
 

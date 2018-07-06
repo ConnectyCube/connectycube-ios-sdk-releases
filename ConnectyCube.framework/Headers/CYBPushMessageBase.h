@@ -9,6 +9,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ CYBPushMessageBase class interface.
+ This class represents push message base interface.
+ */
 NS_SWIFT_NAME(PushMessageBase)
 @interface CYBPushMessageBase : NSObject <NSSecureCoding, NSCopying>
 

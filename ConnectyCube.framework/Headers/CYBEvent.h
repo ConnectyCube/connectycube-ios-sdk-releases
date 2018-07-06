@@ -35,7 +35,8 @@ NS_SWIFT_NAME(Event)
 /** 
  Event state.
  
- @discussion If you want to send specific notification more than once - just edit Event & set this field to 'YES', Then push will be send immediately, without creating a new one Event. */
+ @discussion If you want to send specific notification more than once - just edit Event & set this field to 'YES', Then push will be send immediately, without creating a new one Event.
+ */
 @property (nonatomic, assign) BOOL active;
 
 /** 
@@ -49,9 +50,9 @@ NS_SWIFT_NAME(Event)
 @property (nonatomic, assign) CYBMPushType pushType;
 
 /** 
- Recipients - should contain a string of user ids divided by comas.
+ Recipients user IDs.
  */
-@property (nonatomic, copy, nullable) NSString *usersIDs;
+@property (nonatomic, copy, nullable) NSArray <NSNumber *> *usersIDs;
 
 /** 
  Recipients - should contain a string of user external ids divided by comas.
@@ -60,24 +61,29 @@ NS_SWIFT_NAME(Event)
 
 /** 
  Recipients tags - should contain a string of user tags divided by comas.
- Recipients (users) must have at LEAST ONE tag that specified in list.
+ 
+ @note Recipients (users) must have at LEAST ONE tag that specified in list.
  */
 @property (nonatomic, copy, nullable) NSString *usersTagsAny;
 
 /** 
  Recipients tags - should contain a string of user tags divided by comas.
- Recipients (users) must exactly have ONLY ALL tags that specified in list.
+ 
+ @note Recipients (users) must exactly have ONLY ALL tags that specified in list.
  */
 @property (nonatomic, copy, nullable) NSString *usersTagsAll;
 
 /** 
  Recipients tags - should contain a string of user tags divided by comas.
- Recipients (users) mustn't have tags that specified in list.
+ 
+ @note Recipients (users) mustn't have tags that specified in list.
  */
 @property (nonatomic, copy, nullable) NSString *usersTagsExclude;
 
 /** 
- The name of the event. Service information. Only for the user.
+ The name of the event.
+ 
+ @note Service information. Only for the user.
  */
 @property (nonatomic, copy, nullable) NSString *name;
 
@@ -105,14 +111,16 @@ NS_SWIFT_NAME(Event)
  */
 @property (nonatomic, strong, nullable) NSDate *endDate;
 
-/** The period of the event in seconds.
- Possible values:
- 86400 (1 day)
- 604800 (1 week)
- 2592000 (1 month)
- 31557600 (1 year).
- Required: No, if the envent's 'type' = CYBEventTypeOneShot, CYBEventTypeMultiShot or CYBEventTypeFixedDate
- Yes, if the envent's 'type' = CYBEventTypePeriodDate
+/**
+ The period of the event in seconds.
+ 
+ @remark Possible values:
+            86400 (1 day)
+            604800 (1 week)
+            2592000 (1 month)
+            31557600 (1 year).
+ 
+ @note Required: No, if the envent's 'type' = CYBEventTypeOneShot, CYBEventTypeMultiShot or CYBEventTypeFixedDate. Yes, if the envent's 'type' = CYBEventTypePeriodDate
  */
 @property (nonatomic, assign) NSUInteger period;
 
@@ -133,7 +141,7 @@ NS_SWIFT_NAME(Event)
  */
 + (CYBEvent *)event;
 
-//MARK: - Converters
+// MARK: - Converters
 
 + (CYBEventType)eventTypeFromString:(nullable NSString *)eventType;
 + (nullable NSString *)eventTypeToString:(CYBEventType)eventType;

@@ -18,16 +18,24 @@ NS_ASSUME_NONNULL_BEGIN
 NS_SWIFT_NAME(AddressBookUpdates)
 @interface CYBAddressBookUpdates : NSObject
 
-/** The number of created objects */
+/**
+ The number of created objects.
+ */
 @property (nonatomic, assign) NSUInteger created;
 
-/** The number of deleted objects */
+/**
+ The number of deleted objects.
+ */
 @property (nonatomic, assign) NSUInteger deleted;
 
-/** The number of updated objects */
+/**
+ The number of updated objects.
+ */
 @property (nonatomic, assign) NSUInteger updated;
 
-/** The array of rejected objects */
+/**
+ The array of rejected objects.
+ */
 @property (nonatomic, strong, nullable) NSArray<CYBAddressBookRejectDetails *> *rejected;
 
 @end

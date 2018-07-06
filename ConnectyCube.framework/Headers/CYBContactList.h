@@ -23,7 +23,7 @@ NS_SWIFT_NAME(ContactList)
 @property (nonatomic, readonly, nullable) NSArray<CYBContactListItem *> *contacts;
 
 /**
- *  Your requests which pending approval.
+ Your requests which pending approval.
  */
 @property (nonatomic, readonly, nullable) NSArray<CYBContactListItem *> *pendingApproval;
 

@@ -9,46 +9,46 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString * const CYBEventMessagePayloadKey;
+extern NSString * const CYBEventMessagePayloadKey NS_SWIFT_NAME(EventMessagePayloadKey);
 
-extern NSString * const CYBEventMessagePushAlertKey;
-extern NSString * const CYBEventMessagePushBadgeKey;
-extern NSString * const CYBEventMessagePushSoundKey;
+extern NSString * const CYBEventMessagePushAlertKey NS_SWIFT_NAME(EventMessagePushAlertKey);
+extern NSString * const CYBEventMessagePushBadgeKey NS_SWIFT_NAME(EventMessagePushBadgeKey);
+extern NSString * const CYBEventMessagePushSoundKey NS_SWIFT_NAME(EventMessagePushSoundKey);
 
 // Push message dict keys
-extern NSString * const CYBPushMessageAdditionalInfoKey;
-extern NSString * const CYBPushMessageApsKey;
-extern NSString * const CYBPushMessageAlertKey;
-extern NSString * const CYBPushMessageAlertBodyKey;
-extern NSString * const CYBPushMessageAlertActionLocKey;
-extern NSString * const CYBPushMessageAlertLocKey;
-extern NSString * const CYBPushMessageAlertLocArgsKey;
-extern NSString * const CYBPushMessageAlertLaunchImageKey;
-extern NSString * const CYBPushMessageBadgeKey;
-extern NSString * const CYBPushMessageSoundKey;
-extern NSString * const CYBPushMessageRichContentKey;
+extern NSString * const CYBPushMessageAdditionalInfoKey NS_SWIFT_NAME(PushMessageAdditionalInfoKey);
+extern NSString * const CYBPushMessageApsKey NS_SWIFT_NAME(PushMessageApsKey);
+extern NSString * const CYBPushMessageAlertKey NS_SWIFT_NAME(PushMessageAlertKey);
+extern NSString * const CYBPushMessageAlertBodyKey NS_SWIFT_NAME(PushMessageAlertBodyKey);
+extern NSString * const CYBPushMessageAlertActionLocKey NS_SWIFT_NAME(PushMessageAlertActionLocKey);
+extern NSString * const CYBPushMessageAlertLocKey NS_SWIFT_NAME(PushMessageAlertLocKey);
+extern NSString * const CYBPushMessageAlertLocArgsKey NS_SWIFT_NAME(PushMessageAlertLocArgsKey);
+extern NSString * const CYBPushMessageAlertLaunchImageKey NS_SWIFT_NAME(PushMessageAlertLaunchImageKey);
+extern NSString * const CYBPushMessageBadgeKey NS_SWIFT_NAME(PushMessageBadgeKey);
+extern NSString * const CYBPushMessageSoundKey NS_SWIFT_NAME(PushMessageSoundKey);
+extern NSString * const CYBPushMessageRichContentKey NS_SWIFT_NAME(PushMessageRichContentKey);
 
 // Event types
-extern NSString * const kCYBEventTypeOneShot;
-extern NSString * const kCYBEventTypeFixedDate;
-extern NSString * const kCYBEventTypePeriodDate;
-extern NSString * const kCYBEventTypeMultiShot;
+extern NSString * const kCYBEventTypeOneShot NS_SWIFT_NAME(EventTypeOneShot);
+extern NSString * const kCYBEventTypeFixedDate NS_SWIFT_NAME(EventTypeFixedDate);
+extern NSString * const kCYBEventTypePeriodDate NS_SWIFT_NAME(EventTypePeriodDate);
+extern NSString * const kCYBEventTypeMultiShot NS_SWIFT_NAME(EventTypeMultiShot);
 
 // Notification channels
-extern NSString * const kCYBNotificationChannelsEmail;
-extern NSString * const kCYBNotificationChannelsAPNS;
-extern NSString * const kCYBNotificationChannelsAPNSVOIP;
-extern NSString * const kCYBNotificationChannelsGCM;
-extern NSString * const kCYBNotificationChannelsMPNS;
+extern NSString * const kCYBNotificationChannelsEmail NS_SWIFT_NAME(NotificationChannelsEmail);
+extern NSString * const kCYBNotificationChannelsAPNS NS_SWIFT_NAME(NotificationChannelsAPNS);
+extern NSString * const kCYBNotificationChannelsAPNSVOIP NS_SWIFT_NAME(NotificationChannelsAPNSVOIP);
+extern NSString * const kCYBNotificationChannelsGCM NS_SWIFT_NAME(NotificationChannelsGCM);
+extern NSString * const kCYBNotificationChannelsMPNS NS_SWIFT_NAME(NotificationChannelsMPNS);
 
 // Notification type
-extern NSString * const kCYBNotificationTypePush;
-extern NSString * const kCYBNotificationTypeEmail;
+extern NSString * const kCYBNotificationTypePush NS_SWIFT_NAME(NotificationTypePush);
+extern NSString * const kCYBNotificationTypeEmail NS_SWIFT_NAME(NotificationTypeEmail);
 
 // Push type
-extern NSString * const kCYBMPushTypeAPNS;
-extern NSString * const kCYBMPushTypeAPNSVOIP;
-extern NSString * const kCYBMPushTypeGCM;
-extern NSString * const kCYBMPushTypeMPNS;
+extern NSString * const kCYBPushTypeAPNS NS_SWIFT_NAME(PushTypeAPNS);
+extern NSString * const kCYBPushTypeAPNSVOIP NS_SWIFT_NAME(PushTypeAPNSVOIP);
+extern NSString * const kCYBPushTypeGCM NS_SWIFT_NAME(PushTypeGCM);
+extern NSString * const kCYBPushTypeMPNS NS_SWIFT_NAME(PushTypeMPNS);
 
 NS_ASSUME_NONNULL_END

@@ -33,21 +33,21 @@ NS_SWIFT_NAME(BlobObjectAccess)
 /** 
  Url with params.
  
- @discussion Use it for upload file.
+ @discussion Use it for file upload.
  */
 @property (nonatomic, copy, nullable) NSString *urlWithParams;
 
 /**
  Params.
  
- @discussion Use them for upload file.
+ @discussion Use them for file upload.
  */
 @property (nonatomic, copy, nullable) NSDictionary *params;
 
 /** 
  Url with params.
  
- @discussion Use it for upload file.
+ @discussion Use it for file upload.
  */
 @property (nonatomic, strong, nullable) NSURL *url;
 
