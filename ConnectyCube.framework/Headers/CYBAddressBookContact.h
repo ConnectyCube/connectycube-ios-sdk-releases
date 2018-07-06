@@ -16,15 +16,31 @@ NS_ASSUME_NONNULL_BEGIN
 NS_SWIFT_NAME(AddressBookContact)
 @interface CYBAddressBookContact : NSObject <NSSecureCoding, NSCopying>
 
-/** The name of address book contact item (required only for create/update), min 1 max 255 symbols */
- @property (nonatomic, copy) NSString *name;
+/**
+ The name of address book contact item.
  
- /** The phone number of address book contact item (required), min 10 max 15 symbols */
- @property (nonatomic, copy) NSString *phone;
+ @note Required only for create/update.
  
- /** The flag to destroy the address book contact item (not required, possible value YES) */
- @property (nonatomic) BOOL destroy;
+ @remark Min 1 max 255 symbols
+ */
+@property (nonatomic, copy) NSString *name;
+
+/**
+ The phone number of address book contact item.
  
- @end
+ @note Required.
  
- NS_ASSUME_NONNULL_END
+ @remark Min 10 max 15 symbols
+ */
+@property (nonatomic, copy) NSString *phone;
+
+/**
+ The flag to destroy the address book contact item.
+ 
+ @note Not required.
+ */
+@property (nonatomic) BOOL destroy;
+
+@end
+
+NS_ASSUME_NONNULL_END

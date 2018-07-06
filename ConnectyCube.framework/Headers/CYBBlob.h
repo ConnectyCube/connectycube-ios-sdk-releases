@@ -20,17 +20,17 @@ NS_SWIFT_NAME(Blob)
 @interface CYBBlob : NSObject <NSSecureCoding, NSCopying>
 
 /**
- The ID of the blob
+ The ID of the blob.
  */
 @property (nonatomic) NSUInteger ID;
 
 /**
- The Date and time when the blob was created
+ The Date and time when the blob was created.
  */
 @property (nonatomic) NSDate *createdAt;
 
 /**
- The Date and time when the blob was updated
+ The Date and time when the blob was updated.
  */
 @property (nonatomic) NSDate *updatedAt;
 /**

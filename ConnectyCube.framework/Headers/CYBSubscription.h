@@ -20,17 +20,17 @@ NS_SWIFT_NAME(Subscription)
 @interface CYBSubscription : NSObject <NSSecureCoding, NSCopying>
 
 /**
- The ID of the subscription
+ The ID of the subscription.
  */
 @property (nonatomic) NSUInteger ID;
 
 /**
- The Date and time when the subcription was created
+ The Date and time when the subcription was created.
  */
 @property (nonatomic) NSDate *createdAt;
 
 /**
- The Date and time when the subscription was updated
+ The Date and time when the subscription was updated.
  */
 @property (nonatomic) NSDate *updatedAt;
 

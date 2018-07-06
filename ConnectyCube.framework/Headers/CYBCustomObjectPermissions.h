@@ -38,7 +38,7 @@ NS_SWIFT_NAME(CustomObjectPermissions)
 @property (nonatomic, assign) CYBCustomObjectPermissionsAccess deleteAccess;
 
 /** 
- Users IDs  for read access.
+ Users IDs for read access.
  */
 @property (nonatomic, strong, nullable) NSArray<NSString *> *usersIDsForReadAccess;
 
@@ -48,7 +48,7 @@ NS_SWIFT_NAME(CustomObjectPermissions)
 @property (nonatomic, strong, nullable) NSArray<NSString *> *usersGroupsForReadAccess;
 
 /** 
- Users IDs  for update access.
+ Users IDs for update access.
  */
 @property (nonatomic, strong, nullable) NSArray<NSString *> *usersIDsForUpdateAccess;
 
@@ -68,13 +68,13 @@ NS_SWIFT_NAME(CustomObjectPermissions)
 @property (nonatomic, strong, nullable) NSArray<NSString *> *usersGroupsForDeleteAccess;
 
 /** 
- Create permissions object
+ Create permissions object.
  
  @return New instance of CYBCustomObjectPermissions
  */
 + (instancetype)permissions;
 
-//MARK: - Converters
+// MARK: - Converters
 
 + (CYBCustomObjectPermissionsAccess)permissionsAccessFromString:(NSString *)permissionsAccess;
 + (nullable NSString *)permissionsAccessToString:(CYBCustomObjectPermissionsAccess)permissionsAccess;

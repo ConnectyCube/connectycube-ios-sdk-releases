@@ -9,6 +9,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ CYBUpdateUserParameters class interface.
+ This class represents interfae for updating user parameters.
+ */
 NS_SWIFT_NAME(UpdateUserParameters)
 @interface CYBUpdateUserParameters : NSObject
 

@@ -9,11 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ CYBCustomObjectFile class interface.
+ This class represents custom object file interface.
+ */
 NS_SWIFT_NAME(CustomObjectFile)
 @interface CYBCustomObjectFile : NSObject <NSSecureCoding, NSCopying>
 
 /** 
- The name of the file .
+ The name of the file.
  */
 @property (nonatomic, copy, nullable) NSString *name;
 

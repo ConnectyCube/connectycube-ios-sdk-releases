@@ -12,9 +12,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- CYBChatMessage structure. Represents message object for peer-to-peer chat.
- Please set only text, recipientID & senderID values since ID is setted 
- automatically by CYBChat
+ CYBChatMessage class interface.
+ Represents message object for peer-to-peer chat.
+ 
+ @note Please set only text, recipientID & senderID values since ID is setted automatically by CYBChat.
  */
 NS_SWIFT_NAME(ChatMessage)
 @interface CYBChatMessage : NSObject <NSSecureCoding, NSCopying>
@@ -30,7 +31,12 @@ NS_SWIFT_NAME(ChatMessage)
 @property (nonatomic, copy, nullable) NSString *text;
 
 /**
- Message receiver ID
+ Save to history. Default - YES.
+ */
+@property (nonatomic, assign) BOOL saveToHistory;
+
+/**
+ Message receiver ID.
  */
 @property (nonatomic, assign) NSUInteger recipientID;
 
@@ -42,24 +48,19 @@ NS_SWIFT_NAME(ChatMessage)
 @property (nonatomic, assign) NSUInteger senderID;
 
 /**
- Sender resource
+ Sender resource.
  */
 @property (nonatomic, copy, nullable) NSString *senderResource;
 
 /**
- Is message carbon
+ Is message carbon.
  */
 @property (nonatomic, assign, readonly) BOOL carbon;
 
 /**
- *  Message date sent.
+ Message date sent.
  */
 @property (nonatomic, strong, nullable) NSDate *dateSent;
-
-/**
- Message custom parameters. Don't use 'body' & 'delay' as keys for parameters.
- */
-@property (nonatomic, strong, null_resettable) NSMutableDictionary<NSString *, NSString *> *customParameters;
 
 /**
  Array of attachments. Array of CYBChatAttachment instances.
@@ -110,10 +111,23 @@ NS_SWIFT_NAME(ChatMessage)
 
 /**
  Create new markable message.
+ 
  @return new markable CYBChatMessage instance
  */
 + (instancetype)markableMessage;
 
 @end
 
+@interface CYBChatMessage(KeySubscripting)
+
+/**
+ Message custom parameters. Don't use 'body' & 'delay' as keys for parameters.
+ */
+@property (nonatomic, readonly) NSMutableDictionary<NSString *, NSString *> *customParameters;
+
+// MARK: Keyed subscripting for customParameters
+
+- (nullable NSString *)objectForKeyedSubscript:(NSString *)key;
+- (void)setObject:(nullable NSString *)obj forKeyedSubscript:(NSString *)key;
+@end
 NS_ASSUME_NONNULL_END

@@ -36,7 +36,7 @@ NS_SWIFT_NAME(PrivacyList)
 /**
  Init with name and items.
  
- @param name  Name of privacy list
+ @param name Name of privacy list
  @param items Array of privacy items
  
  @note This is designated initializer. Name must contain at least one character.

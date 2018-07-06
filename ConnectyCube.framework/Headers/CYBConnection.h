@@ -1,13 +1,19 @@
 //
-// CYBConnection.h
-
-//  Created by ConnectyCube team
-//  Copyright (c) 2018 ConnectyCube. All rights reserved.
+//  CYBConnection.h
+//  ConnectyCube
+//
+//  Copyright © 2018 ConnectyCube. All rights reserved.
+//
 
 #import <ConnectyCube/CYBSettings.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ CYBConnection class interface.
+ This class represents an interface for managing requests connection.
+ */
+NS_SWIFT_NAME(Connection)
 @interface CYBConnection : NSObject
 
 /**
@@ -30,9 +36,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setURLSessionDidFinishBackgroundEventsBlock:(nullable void (^)(NSURLSession * _Nullable session))block;
 
 /**
- Cancel all runing requests
+ Cancel all runing requests.
  */
-+ (void)cancelAllRequests:(dispatch_block_t)completion ;
++ (void)cancelAllRequests:(dispatch_block_t)completion;
 
 @end
 

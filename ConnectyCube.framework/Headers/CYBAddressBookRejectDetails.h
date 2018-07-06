@@ -16,10 +16,14 @@ NS_ASSUME_NONNULL_BEGIN
 NS_SWIFT_NAME(AddressBookRejectDetails)
 @interface CYBAddressBookRejectDetails : NSObject
 
-/** The index of rejected object */
+/**
+ The index of rejected object.
+ */
 @property (nonatomic, assign) NSUInteger index;
 
-/** The reject reason details*/
+/**
+ The reject reason details.
+ */
 @property (nonatomic, copy) NSString *details;
 
 @end

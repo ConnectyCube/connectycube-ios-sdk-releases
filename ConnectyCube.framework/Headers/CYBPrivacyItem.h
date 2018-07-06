@@ -7,10 +7,15 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ Privacy type.
+
+ - CYBPrivacyTypeUserID: This type is used to block the user in private chat dialog.
+ - CYBPrivacyTypeGroupUserID: This type is used to block the user in group chat dialog.
+ */
 typedef NS_ENUM(NSUInteger, CYBPrivacyType) {
-    //This type is used to block the user in private chat dialog.
+    
     CYBPrivacyTypeUserID = 1,
-    //This type is used to block the user in group chat dialog.
     CYBPrivacyTypeGroupUserID
     
 } NS_SWIFT_NAME(PrivacyType);
@@ -27,7 +32,7 @@ NS_SWIFT_NAME(PrivacyItem)
 /**
  Returns privacy type of the item.
  
- @see CYBPrivacyItemType.
+ @see CYBPrivacyItemType
  */
 @property (assign, nonatomic, readonly) CYBPrivacyType privacyType;
 
@@ -61,13 +66,8 @@ NS_SWIFT_NAME(PrivacyItem)
                              userID:(NSUInteger)userID
                               allow:(BOOL)allow;
 
-/**
- Unavailable initializer.
- */
+// unavailable initializers
 - (instancetype)init NS_UNAVAILABLE;
-/**
- Unavailable initializer.
- */
 + (instancetype)new NS_UNAVAILABLE;
 
 @end

@@ -15,35 +15,36 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CYBRequest (CYBAuth)
 
 /**
- The block with response user
+ The block with response user.
+ 
  @param user CYBUser instance
  */
 typedef void(^CYBUserBlock)(CYBUser *user);
 
-//MARK: - App authorization
+// MARK: - App authorization
 
 /**
- Session Destroy
+ Session Destroy.
  
- @param successBlock Block with response instance if the request is succeeded.
- @param errorBlock Block with response instance if the request is failed.
+ @param successBlock Block with response instance if the request is succeeded
+ @param errorBlock Block with response instance if the request is failed
  
- @return An instance of CYBRequest for cancel operation mainly.
+ @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)destroySessionWithSuccessBlock:(nullable CYBSuccessBlock)successBlock
                                     errorBlock:(nullable CYBErrorBlock)errorBlock;
 
-//MARK: - LogIn
+// MARK: - LogIn
 
 /**
- User LogIn with login
+ User LogIn with login.
  
- @param login Login of CYBUser which authenticates.
- @param password Password of CYBUser which authenticates.
- @param successBlock Block with response and user instances if the request is succeeded.
- @param errorBlock Block with response instance if the request is failed.
+ @param login Login of CYBUser which authenticates
+ @param password Password of CYBUser which authenticates
+ @param successBlock Block with response and user instances if the request is succeeded
+ @param errorBlock Block with response instance if the request is failed
  
- @return An instance of CYBRequest for cancel operation mainly.
+ @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)logInWithUserLogin:(NSString *)login
                           password:(NSString *)password
@@ -51,14 +52,14 @@ typedef void(^CYBUserBlock)(CYBUser *user);
                         errorBlock:(nullable CYBErrorBlock)errorBlock;
 
 /**
- User LogIn with email
+ User LogIn with email.
  
- @param email Email of CYBUser which authenticates.
- @param password Password of CYBUser which authenticates.
- @param successBlock Block with response and user instances if the request is succeeded.
- @param errorBlock Block with response instance if the request is failed.
+ @param email Email of CYBUser which authenticates
+ @param password Password of CYBUser which authenticates
+ @param successBlock Block with response and user instances if the request is succeeded
+ @param errorBlock Block with response instance if the request is failed
  
- @return An instance of CYBRequest for cancel operation mainly.
+ @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)logInWithUserEmail:(NSString *)email
                           password:(NSString *)password
@@ -66,15 +67,15 @@ typedef void(^CYBUserBlock)(CYBUser *user);
                         errorBlock:(nullable CYBErrorBlock)errorBlock;
 
 /**
- User LogIn with social provider's token
+ User LogIn with social provider's token.
  
- @param provider Social provider. Posible values: facebook, twitter.
- @param accessToken Social provider access token.
- @param accessTokenSecret Social provider access token secret.
- @param successBlock Block with response and user instances if the request is succeeded.
- @param errorBlock Block with response instance if the request is failed.
+ @param provider Social provider. Posible values: facebook, twitter
+ @param accessToken Social provider access token
+ @param accessTokenSecret Social provider access token secret
+ @param successBlock Block with response and user instances if the request is succeeded
+ @param errorBlock Block with response instance if the request is failed
  
- @return An instance of CYBRequest for cancel operation mainly.
+ @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)logInWithSocialProvider:(NSString *)provider
                             accessToken:(nullable NSString *)accessToken
@@ -83,43 +84,45 @@ typedef void(^CYBUserBlock)(CYBUser *user);
                              errorBlock:(nullable CYBErrorBlock)errorBlock;
 
 /**
- User login using Firebase (only phone number. See https://firebase.google.com/docs/auth/ios/phone-auth).
+ User login using Firebase (only phone number.
  
  @param projectID Firebase project ID
  @param accessToken Access token
- @param successBlock Block with response and user instances if the request is succeeded.
- @param errorBlock Block with response instance if the request is failed.
+ @param successBlock Block with response and user instances if the request is succeeded
+ @param errorBlock Block with response instance if the request is failed
  
- @return An instance of CYBRequest for cancel operation mainly.
+ @see https://firebase.google.com/docs/auth/ios/phone-auth
+ 
+ @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)logInWithFirebaseProjectID:(NSString *)projectID
                                accessToken:(NSString *)accessToken
                               successBlock:(nullable CYBUserBlock)successBlock
                                 errorBlock:(nullable CYBErrorBlock)errorBlock;
 
-//MARK: - LogOut
+// MARK: - LogOut
 
 /**
- LogOut current user
+ LogOut current user.
  
  @param successBlock Block with response instance if the request is succeeded
- @param errorBlock Block with response instance if the request is failed.
+ @param errorBlock Block with response instance if the request is failed
  
- @return An instance of CYBRequest for cancel operation mainly.
+ @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)logOutWithSuccessBlock:(nullable CYBSuccessBlock)successBlock
                             errorBlock:(nullable CYBErrorBlock)errorBlock;
 
-//MARK: - Create User
+// MARK: - Create User
 
 /**
- User sign up
+ User sign up.
  
  @param user User to signup
- @param successBlock Block with response and user instances if the request is succeeded.
- @param errorBlock Block with response instance if the request is failed.
+ @param successBlock Block with response and user instances if the request is succeeded
+ @param errorBlock Block with response instance if the request is failed
  
- @return An instance of CYBRequest. Use this instance to cancel the operation.
+ @return An instance of CYBRequest. Use this instance to cancel the operation
  */
 + (CYBRequest *)signUp:(CYBUser *)user
           successBlock:(nullable CYBUserBlock)successBlock

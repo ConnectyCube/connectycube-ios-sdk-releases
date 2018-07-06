@@ -19,8 +19,11 @@ typedef NS_ENUM(NSUInteger, CYBChatDialogType) {
 
 NS_ASSUME_NONNULL_BEGIN
 
+NS_SWIFT_NAME(ChatErrorBlock)
 typedef void(^CYBChatErrorBlock)(NSError * _Nullable error);
+NS_SWIFT_NAME(UserIDBlock)
 typedef void(^CYBUserIDBlock)(NSUInteger userID);
+NS_SWIFT_NAME(OnlineUsersBlock)
 typedef void(^CYBOnlineUsersBlock)(NSMutableArray<NSNumber *> * _Nullable onlineUsers, NSError * _Nullable error);
 
 /**
@@ -89,7 +92,7 @@ NS_SWIFT_NAME(ChatDialog)
 @property (nonatomic, assign) NSUInteger lastMessageUserID;
 
 /**
- The last message ID
+ The last message ID.
  */
 @property (nonatomic, copy, nullable) NSString *lastMessageID;
 
@@ -127,12 +130,12 @@ NS_SWIFT_NAME(ChatDialog)
 /**
  The Occupants (users) ids to be pushed (added) to the dialog.
  */
-@property (strong, nonatomic, nullable) NSArray<NSString *> *pushOccupantsIDs;
+@property (strong, nonatomic, nullable) NSArray<NSNumber *> *pushOccupantsIDs;
 
 /**
  The Occupants (users) ids to be pulled (removed) from the dialog.
  */
-@property (strong, nonatomic, nullable) NSArray<NSString *> *pullOccupantsIDs;
+@property (strong, nonatomic, nullable) NSArray<NSNumber *> *pullOccupantsIDs;
 
 /**
  Called whenever sent message was blocked on server.
@@ -182,46 +185,46 @@ NS_SWIFT_NAME(ChatDialog)
  */
 - (instancetype)initWithDialogID:(nullable NSString *)dialogID type:(CYBChatDialogType)type;
 
-//MARK: - Send message
+// MARK: - Send message
 
 /**
  Sends chat message with completion block.
  
- @param message    Chat message to send.
- @param completion Completion block with failure error.
+ @param message Chat message to send
+ @param completion Completion block with failure error
  */
 - (void)sendMessage:(CYBChatMessage *)message completionBlock:(nullable CYBChatErrorBlock)completion;
 
 /**
  Sends group chat message to room, without room join.
  
- @param message      Chat message to send
- @param completion   Completion block with failure error.
+ @param message Chat message to send
+ @param completion Completion block with failure error.
  
  @note Available only for 'Enterprise' clients.
  */
 - (void)sendGroupChatMessageWithoutJoin:(CYBChatMessage *)message completion:(nullable CYBChatErrorBlock)completion;
 
-//MARK: - Join/leave
+// MARK: - Join/leave
 
 /**
- Join status of the room
+ Join status of the room.
  
- @return YES if user is joined to room, otherwise - no.
+ @return YES if user is joined to room, otherwise - no
  */
 - (BOOL)isJoined;
 
 /**
  Join to room.
  
- @param completion  Completion block with failure error.
+ @param completion Completion block with failure error.
  */
 - (void)joinWithCompletionBlock:(nullable CYBChatErrorBlock)completion;
 
 /**
  Leave joined room.
  
- @param completion  Completion block with failure error.
+ @param completion Completion block with failure error.
  */
 - (void)leaveWithCompletionBlock:(nullable CYBChatErrorBlock)completion;
 
@@ -232,7 +235,7 @@ NS_SWIFT_NAME(ChatDialog)
  */
 - (void)clearDialogOccupantsStatusBlock;
 
-//MARK: - Users status
+// MARK: - Users status
 
 /**
  Requests users who are joined to room.
@@ -241,7 +244,7 @@ NS_SWIFT_NAME(ChatDialog)
  */
 - (void)requestOnlineUsersWithCompletionBlock:(nullable CYBOnlineUsersBlock)completion;
 
-//MARK: - Now typing
+// MARK: - Now typing
 
 /**
  Sends is typing message to occupants.

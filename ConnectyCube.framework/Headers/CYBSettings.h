@@ -16,25 +16,45 @@ NS_ASSUME_NONNULL_BEGIN
 NS_SWIFT_NAME(Settings)
 @interface CYBSettings : NSObject
 
-/** Storing Application ID */
+/**
+ Storing Application ID.
+ */
 @property (nonatomic, class) NSUInteger applicationID;
 
-/** Setting API Key for ConnectyCube API */
+/**
+ Setting API Key for ConnectyCube API.
+ */
 @property (nonatomic, class, nullable) NSString *authKey;
 
-/** Setting API Secret for ConnectyCube API */
+/**
+ Setting API Secret for ConnectyCube API.
+ */
 @property (nonatomic, class, nullable) NSString *authSecret;
 
-/**Set account key (from admin.connectycube.com). This parameter is skipped for custom endpoints. */
+/**
+ Set account key (from admin.connectycube.com).
+ 
+ @note This parameter is skipped for custom endpoints.
+ */
 @property (nonatomic, class, nullable) NSString *accountKey;
 
-/** Setting application group identifier */
+/**
+ Setting application group identifier.
+ */
 @property (nonatomic, class, nullable) NSString *applicationGroupIdentifier;
 
-/** Setting Api Endpoint. Default - https://api.connectycube.com*/
+/**
+ Setting Api Endpoint.
+ 
+ @remark Default - https://api.connectycube.com
+ */
 @property (nonatomic, class, null_resettable) NSString *apiEndpoint;
 
-/** Setting Chat endpoint. Default - chat.connectycube.com */
+/**
+ Setting Chat endpoint.
+ 
+ @remark Default - chat.connectycube.com
+ */
 @property (nonatomic, class, null_resettable) NSString *chatEndpoint;
 
 /**
@@ -43,6 +63,7 @@ NS_SWIFT_NAME(Settings)
  @warning This method should be used only for Continuous Integration (CI), because of security reasons
  
  @discussion Raises an exception if any configuration step fails.
+ 
  @note This method should be called after the app is launched and before using ConnectyCube services.
  
  @code
@@ -76,22 +97,31 @@ NS_SWIFT_NAME(Settings)
 
 @end
 
-//MARK: Chat settings
+// MARK: Chat settings
 
 @interface CYBSettings (CYBChat)
 
-/**Enable or disable chat auto reconnect. The default value is NO */
+/**
+ Enable or disable chat auto reconnect.
+ 
+ @remark The default value is NO
+ */
 @property (nonatomic, class) BOOL autoReconnectEnabled;
 
-/** Enable or disable message carbons */
+/**
+ Enable or disable message carbons.
+ */
 @property (nonatomic, class) BOOL carbonsEnabled;
 
-/** Set timeout value for Stream Management send a message operation */
+/**
+ Set timeout value for Stream Management send a message operation.
+ */
 @property (nonatomic, class) NSUInteger streamManagementSendMessageTimeout;
 
 /**
  A reconnect timer may optionally be used to attempt a reconnect periodically.
- Default value is 5 seconds
+ 
+ @remark Default value is 5 seconds
  */
 @property (nonatomic, class) NSTimeInterval reconnectTimerInterval;
 
@@ -100,12 +130,11 @@ NS_SWIFT_NAME(Settings)
  For this reason, the stream supports sending keep-alive data.
  This is simply whitespace, which is ignored by the protocol.
  
- Keep-alive data is only sent in the absence of any other data being sent/received.
+ @note Keep-alive data is only sent in the absence of any other data being sent/received.
  
- The default value is 20s.
- The minimum value for TARGET_OS_IPHONE is 10s, else 20s.
+ @remark The default value is 20s. The minimum value for TARGET_OS_IPHONE is 10s, else 20s.
  
- To disable keep-alive, set the interval to zero (or any non-positive number).
+ @discussion To disable keep-alive, set the interval to zero (or any non-positive number).
  
  The keep-alive timer (if enabled) fires every (keepAliveInterval / 4) seconds.
  Upon firing it checks when data was last sent/received,
@@ -116,16 +145,16 @@ NS_SWIFT_NAME(Settings)
 
 /**
  The port the xmpp server is running on.
- If you do not explicitly set the port, the default port will be used.
- If you set the port to zero, the default port will be used.
  
- The default port is 5223.
+ @note If you do not explicitly set the port, the default port will be used. If you set the port to zero, the default port will be used.
+ 
+ @remark The default port is 5223.
  **/
 @property (nonatomic, class) NSUInteger chatEndpointPort;
 
 @end
 
-
+// MARK: - UIKit
 
 @interface CYBSettings (UIKit)
 
@@ -150,7 +179,7 @@ NS_SWIFT_NAME(Settings)
 
 @end
 
-
+// MARK: - Logging
 
 @interface CYBSettings (Logging)
 

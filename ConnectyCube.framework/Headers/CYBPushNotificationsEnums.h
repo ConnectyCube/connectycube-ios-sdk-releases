@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+
 // Event types
 typedef NS_ENUM(NSUInteger, CYBEventType) {
     
