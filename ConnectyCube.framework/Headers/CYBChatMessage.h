@@ -129,5 +129,16 @@ NS_SWIFT_NAME(ChatMessage)
 
 - (nullable NSString *)objectForKeyedSubscript:(NSString *)key;
 - (void)setObject:(nullable NSString *)obj forKeyedSubscript:(NSString *)key;
+
 @end
+
+@interface CYBChatMessage(LocalParameters)
+
+/**
+ A dictionary of chat message local parameters for internal purpose, e.g. to store additional data for chat message in local database.
+ */
+@property (nonatomic, readonly) NSMutableDictionary<NSString *, id> *localParameters;
+
+@end
+
 NS_ASSUME_NONNULL_END
