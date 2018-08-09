@@ -205,6 +205,32 @@ NS_SWIFT_NAME(ChatDialog)
  */
 - (void)sendGroupChatMessageWithoutJoin:(CYBChatMessage *)message completion:(nullable CYBChatErrorBlock)completion;
 
+/**
+ Edit message text with ID.
+ 
+ @note User can edit a message he sent. In this case other parties (user or group chat) should be
+ notified about this and correct the message at their side as well.
+ 
+ @param ID Unique identifier of message
+ @param text New message text.
+ @param last The attribute is optional and can be included inly if you edit last message in chat thread.
+ @param completion Completion block with failure error.
+ */
+- (void)editMessageWithID:(NSString *)ID text:(NSString *)text last:(BOOL)last completion:(nullable CYBChatErrorBlock)completion;
+
+/**
+ Remove Message with ID.
+ 
+ @note If user is an owner of chat message (he sent it) then he can delete the message completely.
+ In this case other parties (user or group chat) should be notified about this and delete
+ the message at their side as well.
+ 
+ @param ID Message ID.
+ @param completion Completion block with failure error.
+ */
+- (void)removeMessageWithID:(NSString *)ID completion:(nullable CYBChatErrorBlock)completion;
+
+
 // MARK: - Join/leave
 
 /**

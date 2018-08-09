@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return An instance of CYBRequest for cancel operation mainly
  */
-+ (CYBRequest *)dialogsWithPaginator:(CYBPaginator *)paginator
++ (CYBRequest *)dialogsWithPaginator:(nullable CYBPaginator *)paginator
                      extendedRequest:(nullable NSDictionary<NSString *, NSString *> *)extendedRequest
                         successBlock:(nullable CYBChatDialogsBlock)successBlock
                           errorBlock:(nullable CYBErrorBlock)errorBlock;
@@ -82,7 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion By default all messages retrieved from server is marked as read, if you need another behaviour please use mark_as_read parameter in extendedParameters dictionary.
  
  @code
- [extendedParameters setObject:@"0" forKey:@"mark_as_read"];
+    extendedParameters[@"mark_as_read"] = 0;
  @endcode
  
  @see CYBPaginator
@@ -90,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)messagesWithDialogID:(NSString *)dialogID
-                     extendedRequest:(nullable NSDictionary<NSString *, NSString *> *) extendedParameters
+                     extendedRequest:(nullable NSDictionary<NSString *, NSString *> *)extendedParameters
                            paginator:(nullable CYBPaginator *)paginator
                         successBlock:(nullable CYBChatMessagesBlock)successBlock
                           errorBlock:(nullable CYBErrorBlock)errorBlock;
