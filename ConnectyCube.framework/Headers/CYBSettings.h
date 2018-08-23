@@ -104,12 +104,14 @@ NS_SWIFT_NAME(Settings)
 /**
  Enable or disable chat auto reconnect.
  
- @remark The default value is NO
+ @remark The default value is YES.
  */
 @property (nonatomic, class) BOOL autoReconnectEnabled;
 
 /**
  Enable or disable message carbons.
+ 
+ @remark The default value is YES.
  */
 @property (nonatomic, class) BOOL carbonsEnabled;
 

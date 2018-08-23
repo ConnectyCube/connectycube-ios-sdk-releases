@@ -55,5 +55,5 @@
 #import <ConnectyCube/CYBUpdateUserParameters.h>
 #import <ConnectyCube/CYBUser.h>
 
-/// Framework version 1.2
+/// Framework version 1.2.1
 FOUNDATION_EXPORT NSString * const ConnectyCubeVersion;
