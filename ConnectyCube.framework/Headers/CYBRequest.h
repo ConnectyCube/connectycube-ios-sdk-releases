@@ -11,15 +11,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/**
- Blocks typedef.
- */
+/** Block with progress */
 NS_SWIFT_NAME(ProgressBlock)
 typedef void(^CYBProgressBlock)(float progress);
 
+/** Block with error */
 NS_SWIFT_NAME(ErrorBlock)
 typedef void(^CYBErrorBlock)(NSError *error);
 
+/** Success block */
 NS_SWIFT_NAME(SuccessBlock)
 typedef void(^CYBSuccessBlock)(void);
 
@@ -40,15 +40,22 @@ NS_SWIFT_NAME(Request)
  */
 @property (nonatomic, getter=isCancelled, readonly) BOOL canceled;
 
-// unavailable initializers
+/** - init is unavailable */
+- (id)init NS_UNAVAILABLE;
+
+/** + new is unavailable */
 + (instancetype)new NS_UNAVAILABLE;
-- (instancetype)init NS_UNAVAILABLE;
 
 /**
  Cancels NSURLSessionTask associated with request.
  */
 - (void)cancel;
 
+/**
+ Cancel all request
+
+ @param completion completion callback
+ */
 + (void)cancelAllRequests:(dispatch_block_t)completion;
 
 @end

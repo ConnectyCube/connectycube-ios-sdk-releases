@@ -9,18 +9,30 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/**
- Presence subscription state.
-
- - CYBPresenceSubscriptionStateNone: The user does not have a subscription to the contact's presence information, and the contact does not have a subscription to the user's presence information
- - CYBPresenceSubscriptionStateTo: The user has a subscription to the contact's presence information, but the contact does not have a subscription to the user's presence information
- - CYBPresenceSubscriptionStateFrom: The contact has a subscription to the user's presence information, but the user does not have a subscription to the contact's presence information
- - CYBPresenceSubscriptionStateBoth: Both the user and the contact have subscriptions to each other's presence information
- */
+/** Presence subscription state. */
 typedef NS_ENUM(NSUInteger, CYBPresenceSubscriptionState) {
+    
+    /**
+     The user does not have a subscription to the contact's presence information,
+     and the contact does not have a subscription to the user's presence information
+     */
     CYBPresenceSubscriptionStateNone = 1,
+    
+    /**
+     The user has a subscription to the contact's presence information,
+     but the contact does not have a subscription to the user's presence information
+     */
     CYBPresenceSubscriptionStateTo = 2,
+    
+    /**
+     The contact has a subscription to the user's presence information,
+     but the user does not have a subscription to the contact's presence information
+     */
     CYBPresenceSubscriptionStateFrom = 3,
+    
+    /**
+     Both the user and the contact have subscriptions to each other's presence information
+     */
     CYBPresenceSubscriptionStateBoth = 4
 } NS_SWIFT_NAME(PresenceSubscriptionState);
 
@@ -47,13 +59,6 @@ NS_SWIFT_NAME(ContactListItem)
  @see http://xmpp.org/rfcs/rfc3921.html#roster
  */
 @property (nonatomic, assign) CYBPresenceSubscriptionState subscriptionState;
-
-@end
-
-@interface CYBContactListItem(Internal)
-
-// Helpers: translate subscriptionState to and from string to and from enum
-+ (CYBPresenceSubscriptionState)subscriptionStateFromString:(nullable NSString *)subscriptionState;
 
 @end
 

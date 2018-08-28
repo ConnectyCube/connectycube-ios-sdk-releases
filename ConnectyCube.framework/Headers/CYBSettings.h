@@ -99,6 +99,8 @@ NS_SWIFT_NAME(Settings)
 
 // MARK: Chat settings
 
+/** Chat settings */
+
 @interface CYBSettings (CYBChat)
 
 /**
@@ -158,7 +160,10 @@ NS_SWIFT_NAME(Settings)
 
 // MARK: - UIKit
 
+/** UIKit Settings */
 @interface CYBSettings (UIKit)
+
+#if TARGET_OS_IOS
 
 /**
  A Boolean value indicating whether the manager is enabled.
@@ -168,7 +173,7 @@ NS_SWIFT_NAME(Settings)
  
  @param enabled
  */
-#if TARGET_OS_IOS
+
 @property (nonatomic, class) BOOL networkIndicatorManagerEnabled;
 
 /**
@@ -183,6 +188,7 @@ NS_SWIFT_NAME(Settings)
 
 // MARK: - Logging
 
+/** Logging Settings*/
 @interface CYBSettings (Logging)
 
 /** Set SDK log level (by default: CYBLogLevelDebug). Possible values: CYBLogLevelDebug, CYBLogLevelNothing. */
@@ -219,6 +225,7 @@ NS_SWIFT_NAME(Settings)
 
 @end
 
+/** NSURLSessionConfiguration */
 @interface CYBSettings (NSURLSessionConfiguration)
 
 /**

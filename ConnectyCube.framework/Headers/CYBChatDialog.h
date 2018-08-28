@@ -11,18 +11,24 @@
 
 typedef NS_ENUM(NSUInteger, CYBChatDialogType) {
     
-    CYBChatDialogTypePublicGroup = 1,
+    CYBChatDialogTypePublicGroup __deprecated_enum_msg("Deprecated in 1.2") = 1,
     CYBChatDialogTypeGroup = 2,
-    CYBChatDialogTypePrivate = 3
+    CYBChatDialogTypePrivate = 3,
+    CYBChatDialogTypePublic = 4
     
 } NS_SWIFT_NAME(ChatDialogType);
 
 NS_ASSUME_NONNULL_BEGIN
 
+/** Block with error instance */
 NS_SWIFT_NAME(ChatErrorBlock)
 typedef void(^CYBChatErrorBlock)(NSError * _Nullable error);
+
+/** Block with user ID */
 NS_SWIFT_NAME(UserIDBlock)
 typedef void(^CYBUserIDBlock)(NSUInteger userID);
+
+/** Block with online users ids */
 NS_SWIFT_NAME(OnlineUsersBlock)
 typedef void(^CYBOnlineUsersBlock)(NSMutableArray<NSNumber *> * _Nullable onlineUsers, NSError * _Nullable error);
 
@@ -63,14 +69,12 @@ NS_SWIFT_NAME(ChatDialog)
 @property (nonatomic, readonly) CYBChatDialogType type;
 
 /**
- The name of the Group dialog.
- 
- @note If chat type is private, name will be nil.
+ The name of the chat dialog.
  */
 @property (nonatomic, copy, nullable) NSString *name;
 
 /**
- The phone of the Group dialog.
+ The photo of the chat dialog.
  
  @discussion Can contain a link to a file in Content module, Custom Objects module or just a web link.
  */
@@ -85,6 +89,11 @@ NS_SWIFT_NAME(ChatDialog)
  The Date of the last message in the dialog.
  */
 @property (nonatomic, strong, nullable) NSDate *lastMessageDate;
+
+/**
+ The Description of the dialog.
+ */
+@property (nonatomic, copy, nullable) NSString *dialogDescription;
 
 /**
  The Sender user ID of last message in current chat dialog.
@@ -109,6 +118,11 @@ NS_SWIFT_NAME(ChatDialog)
 @property (nonatomic, copy, nullable) NSArray<NSNumber *> *occupantIDs;
 
 /**
+ The Pinned messages IDs
+ */
+@property (nonatomic, copy, nullable) NSArray<NSString *> *pinnedMessagesIDs;
+
+/**
  The dictionary that represents the custom data.
  */
 @property (nonatomic, copy, nullable) NSDictionary<NSString *, id> *data;
@@ -119,6 +133,11 @@ NS_SWIFT_NAME(ChatDialog)
 @property (nonatomic, assign) NSUInteger userID;
 
 /**
+ The Admins IDs
+ */
+@property (nonatomic, copy, nullable) NSArray<NSNumber *> *adminsIDs;
+
+/**
  The Recipient (user) ID for the private dialog.
  
  @note ID of a recipient if type = CYBChatDialogTypePrivate. -1 otherwise. Will always return -1 if CYBSession currentUser is nil.
@@ -126,16 +145,6 @@ NS_SWIFT_NAME(ChatDialog)
  @discussion Will be retrieved from 'CYBSession.currentSession.currentUser' by subtracting currentUser.ID from occupantsIDs.
  */
 @property (nonatomic, readonly) NSInteger recipientID;
-
-/**
- The Occupants (users) ids to be pushed (added) to the dialog.
- */
-@property (strong, nonatomic, nullable) NSArray<NSNumber *> *pushOccupantsIDs;
-
-/**
- The Occupants (users) ids to be pulled (removed) from the dialog.
- */
-@property (strong, nonatomic, nullable) NSArray<NSNumber *> *pullOccupantsIDs;
 
 /**
  Called whenever sent message was blocked on server.
@@ -167,10 +176,11 @@ NS_SWIFT_NAME(ChatDialog)
  */
 @property (nonatomic, copy, nullable) CYBUserIDBlock onUpdateOccupant;
 
-// Unavailable initializers
+/** - init is unavailable */
 - (id)init NS_UNAVAILABLE;
-+ (id)new NS_UNAVAILABLE;
 
+/** + new is unavailable */
++ (instancetype)new NS_UNAVAILABLE;
 /**
  Init with dialog ID and type.
  
@@ -302,6 +312,28 @@ NS_SWIFT_NAME(ChatDialog)
  @discussion Call this method if you don't want to recieve typing statuses for this dialog.
  */
 - (void)clearTypingStatusBlocks;
+
+@end
+
+// MARK: - Deprecated
+
+@interface CYBChatDialog(DEPRECATED)
+
+/**
+ The Occupants (users) ids to be pushed (added) to the dialog.
+ 
+ @warning Deprecated in 1.2.
+ */
+@property (strong, nonatomic, nullable) NSArray<NSNumber *> *pushOccupantsIDs
+DEPRECATED_MSG_ATTRIBUTE("Deprecated in 1.2.");
+
+/**
+ The Occupants (users) ids to be pulled (removed) from the dialog.
+ 
+ @warning Deprecated in 1.2.
+ */
+@property (strong, nonatomic, nullable) NSArray<NSNumber *> *pullOccupantsIDs
+DEPRECATED_MSG_ATTRIBUTE("Deprecated in 1.2.");
 
 @end
 

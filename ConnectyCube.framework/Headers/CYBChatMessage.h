@@ -97,7 +97,8 @@ NS_SWIFT_NAME(ChatMessage)
 
 @end
 
-@interface CYBChatMessage(KeySubscripting)
+/** Keyed subscripting */
+@interface CYBChatMessage(KeyedSubscripting)
 
 /** Message custom parameters. Don't use 'body' & 'delay' as keys for parameters. */
 @property (nonatomic, readonly) NSMutableDictionary<NSString *, NSString *> *customParameters;
@@ -108,6 +109,8 @@ NS_SWIFT_NAME(ChatMessage)
 - (void)setObject:(nullable NSString *)obj forKeyedSubscript:(NSString *)key;
 
 @end
+
+/** Local parameters */
 
 @interface CYBChatMessage(LocalParameters)
 

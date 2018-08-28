@@ -15,6 +15,7 @@
 #import <ConnectyCube/CYBChatAttachment.h>
 #import <ConnectyCube/CYBChatDelegate.h>
 #import <ConnectyCube/CYBChatDialog.h>
+#import <ConnectyCube/CYBUpdateChatDialogParameters.h>
 #import <ConnectyCube/CYBChatMessage.h>
 #import <ConnectyCube/CYBChatTypes.h>
 #import <ConnectyCube/CYBCustomObject.h>
@@ -55,5 +56,5 @@
 #import <ConnectyCube/CYBUpdateUserParameters.h>
 #import <ConnectyCube/CYBUser.h>
 
-/// Framework version 1.2.1
+/// Framework version 1.3
 FOUNDATION_EXPORT NSString * const ConnectyCubeVersion;

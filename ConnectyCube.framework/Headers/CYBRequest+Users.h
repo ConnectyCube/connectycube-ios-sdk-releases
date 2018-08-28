@@ -14,11 +14,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/** Methods that provide Users functionality */
 @interface CYBRequest (CYBUsers)
 
+/** Block with paginator and array of CYBUser instances */
 NS_SWIFT_NAME(UsersPageBlock)
 typedef void(^CYBUsersPageBlock)(CYBPaginator *paginator, NSArray<CYBUser *> *users);
 
+/** Block with CYBUser instance */
 NS_SWIFT_NAME(UserBlock)
 typedef void(^CYBUserBlock)(CYBUser *user);
 
@@ -28,11 +31,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  Retrieve all Users for current account (with extended set of pagination parameters).
  
  @param paginator The object to pass a pagination parameters to server. It is useful in implementing paginated results
- @param successBlock Block with response, page and users instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
- @see CYBPaginator
- 
+ @param successBlock Block with paginator and users instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)usersWithPaginator:(nullable CYBPaginator *)paginator
@@ -44,11 +44,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  
  @param extendedRequest Dictionary with extended request
  @param paginator Pagination parameters
- @param successBlock Block with response, page and users instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
- @see CYBPaginator
- 
+ @param successBlock Block with paginator and users instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)usersWithExtendedRequest:(NSDictionary<NSString *, id> *)extendedRequest
@@ -62,9 +59,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  Retrieve User by identifier.
  
  @param userID ID of CYBUser to be retrieved
- @param successBlock Block with response and user instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with user instance if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)userWithID:(NSUInteger)userID
@@ -78,11 +74,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  
  @param IDs IDs of users which you want to retrieve
  @param paginator The object to pass a pagination parameters to server. It is useful in implementing paginated results
- @param successBlock Block with response, page and users instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
- @see CYBPaginator
- 
+ @param successBlock Block with paginator and users instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)usersWithIDs:(NSArray<NSNumber *> *)IDs
@@ -96,9 +89,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  Retrieve User by login.
  
  @param userLogin Login of user to be retrieved
- @param successBlock Block with response and user instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with user instance if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)userWithLogin:(NSString *)userLogin
@@ -112,11 +104,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  
  @param logins Logins of users which you want to retrieve
  @param paginator The object to pass a pagination parameters to server. It is useful in implementing paginated results
- @param successBlock Block with response, page and users instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
- @see CYBPaginator
- 
+ @param successBlock Block with paginator and users instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)usersWithLogins:(NSArray<NSString *> *)logins
@@ -131,11 +120,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  
  @param userFullName Full name of users to be retrieved
  @param paginator The object to pass a pagination parameters to server. It is useful in implementing paginated results
- @param successBlock Block with response, page and users instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
- @see CYBPaginator
- 
+ @param successBlock Block with paginator and users instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)usersWithFullName:(NSString *)userFullName
@@ -150,11 +136,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  
  @param tags Tags of users to be retrieved
  @param paginator The object to pass a pagination parameters to server. It is useful in implementing paginated results
- @param successBlock Block with response, page and users instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
- @see CYBPaginator
- 
+ @param successBlock Block with paginator and users instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)usersWithTags:(NSArray<NSString *> *)tags
@@ -169,11 +152,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  
  @param phoneNumbers Pnone numbers of users which you want to retrieve
  @param paginator The object to pass a pagination parameters to server. It is useful in implementing paginated results
- @param successBlock Block with response, page and users instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
- @see CYBPaginator
- 
+ @param successBlock Block with paginator and users instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)usersWithPhoneNumbers:(NSArray<NSString *> *)phoneNumbers
@@ -187,8 +167,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  Retrieve User by Facebook ID.
  
  @param userFacebookID Facebook ID of user to be retrieved
- @param successBlock Block with response and user instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
+ @param successBlock Block with and user instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  
  @return An instance of CYBRequest for cancel operation mainly
  */
@@ -203,11 +183,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  
  @param facebookIDs Facebook IDs of users which you want to retrieve
  @param paginator The object to pass a pagination parameters to server. It is useful in implementing paginated results
- @param successBlock Block with response, page and users instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
- @see CYBPaginator
- 
+ @param successBlock Block with paginator and users instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)usersWithFacebookIDs:(NSArray<NSString *> *)facebookIDs
@@ -221,9 +198,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  Retrieve User by Twitter ID.
  
  @param userTwitterID Twitter ID of user to be retrieved
- @param successBlock Block with response and user instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with and user instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)userWithTwitterID:(NSString *)userTwitterID
@@ -237,11 +213,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  
  @param twitterIDs Twitter IDs of users which you want to retrieve
  @param paginator The object to pass a pagination parameters to server. It is useful in implementing paginated results
- @param successBlock Block with response, page and users instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
- @see CYBPaginator
- 
+ @param successBlock Block with  paginator and users instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)usersWithTwitterIDs:(NSArray <NSString *> *)twitterIDs
@@ -255,8 +228,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  Retrieve User by Email.
  
  @param userEmail Email of user to be retrieved
- @param successBlock Block with response and user instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
+ @param successBlock Block with user instance if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  
  @return An instance of CYBRequest for cancel operation mainly
  */
@@ -271,11 +244,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  
  @param emails Emails of users which you want to retrieve
  @param paginator The object to pass a pagination parameters to server. It is useful in implementing paginated results
- @param successBlock Block with response, page and users instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
- @see CYBPaginator
- 
+ @param successBlock Block with paginator and users instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)usersWithEmails:(NSArray<NSString *> *)emails
@@ -289,9 +259,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  Retrieve User by External identifier.
  
  @param userExternalID External ID of user to be retrieved
- @param successBlock Block with response and user instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with user instance if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)userWithExternalID:(NSUInteger)userExternalID
@@ -303,10 +272,9 @@ typedef void(^CYBUserBlock)(CYBUser *user);
 /**
  Update current session user.
  
- @param parameters   User parameters that could be updated
- @param successBlock Block with response and user instances if the request is succeeded
- @param errorBlock   Block with response instance if the request is failed
- 
+ @param parameters User parameters that could be updated
+ @param successBlock Block with user instance if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)updateCurrentUser:(CYBUpdateUserParameters *)parameters
@@ -320,9 +288,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  
  @note You should login firstly in order to delete current user
  
- @param successBlock Block with response instance if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block which is called in case of success response
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)deleteCurrentUserWithSuccessBlock:(nullable CYBSuccessBlock)successBlock
@@ -334,9 +301,8 @@ typedef void(^CYBUserBlock)(CYBUser *user);
  Reset user's password. User with this email will retrieve an email instruction for reset password.
  
  @param email User's email
- @param successBlock Block with response instance if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock block which is called in case of success response
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)resetUserPasswordWithEmail:(NSString *)email

@@ -14,18 +14,23 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/** Block with CYBBlob instance */
 NS_SWIFT_NAME(BlobBlock)
 typedef void(^CYBBlobBlock)(CYBBlob *blob);
 
+/** Block with NSData instance */
 NS_SWIFT_NAME(FileDataBlock)
 typedef void(^CYBFileDataBlock)(NSData *data);
 
+/** Block with paginator and array of CYBBlob instances */
 NS_SWIFT_NAME(BlobsPageBlock)
 typedef void(^CYBBlobsPageBlock)(CYBPaginator *paginator, NSArray<CYBBlob *> * blobs);
 
+/** Block with CYBBlobObjectAccess instance */
 NS_SWIFT_NAME(BlobObjectAccessBlock)
 typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
 
+/** Methods that provide Storage functionality */
 @interface CYBRequest (Storage)
 
 // MARK: - Create Blob
@@ -34,9 +39,8 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  Create blob.
  
  @param blob An instance of CYBBlob, describing the file to be uploaded
- @param successBlock The block called with created blob instance if the request is succeeded
- @param errorBlock The block with NSError instance if the request is failed
- 
+ @param successBlock Block with created blob instance if the request is succeeded
+ @param errorBlock Block with error instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)createBlob:(CYBBlob *)blob
@@ -52,7 +56,6 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  @param blobID Unique blob identifier, value of ID property of the CYBBlob instance
  @param successBlock Block blob instance if the request is succeeded
  @param errorBlock Block with NSError instance if the request is failed
- 
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)blobWithID:(NSUInteger)blobID
@@ -65,11 +68,8 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  Get list of blob for the current User (with extended set of pagination parameters).
  
  @param paginator The object to pass a pagination parameters to server. It is useful in implementing paginated results
- @param successBlock Block with page and blobs instances if the request is succeeded
+ @param successBlock Block with paginator and blobs instances if the request is succeeded
  @param errorBlock Block with NSError instance if the request is failed
- 
- @see CYBPaginator
- 
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)blobsWithPaginator:(nullable CYBPaginator *)paginator
@@ -84,7 +84,6 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  @param blob An instance of CYBBlob to be updated
  @param successBlock Block with updated blob instance if the request is succeeded
  @param errorBlock Block with NSError instance if the request is failed
- 
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)updateBlob:(CYBBlob *)blob
@@ -98,8 +97,7 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  
  @param blobID Unique blob identifier, value of ID property of the CYBBlob instance
  @param successBlock The block is called if the request succeeded
- @param errorBlock The block with NSError instance if the request is failed
- 
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)deleteBlobWithID:(NSUInteger)blobID
@@ -112,9 +110,8 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  Get File by ID as BlobObjectAccess with read access.
  
  @param blobID Unique blob identifier, value of ID property of the CYBBlob instance
- @param successBlock Block with response and blob instances if the request is succeeded
+ @param successBlock Block with blob instances if the request is succeeded
  @param errorBlock Block with NSError instance if the request is failed
- 
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)blobObjectAccessWithBlobID:(NSUInteger)blobID
@@ -129,7 +126,7 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  @param data File data
  @param blobWithWriteAccess An instance of CYBBlobObjectAccess
  @param progressBlock Block with upload/download progress
- @param successBlock Block with response if the request is succeeded
+ @param successBlock Block which is called in case of success response
  @param errorBlock  Block with NSError instance if the request is failed
  
  @return An instance of CYBRequest for cancel operation mainly
@@ -146,7 +143,7 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  @param url File URL
  @param blobWithWriteAccess An instance of CYBBlobObjectAccess
  @param progressBlock Block with upload/download progress
- @param successBlock Block with response if request succeded
+ @param successBlock Block which is called in case of success response
  @param errorBlock Block with NSError instance if the request is failed
  
  @return An instance of CYBRequest for cancel operation mainly
@@ -164,7 +161,7 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  
  @param UID File unique identifier, value of UID property of the CYBBlob instance
  @param progressBlock Block with download progress
- @param successBlock Block with response if the request is succeeded
+ @param successBlock Block which is called in case of success response
  @param errorBlock Block with NSError instance if the request is failed
  
  @return An instance of CYBRequest for cancel operation mainly
@@ -195,8 +192,8 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  Download File by file identifier.
  
  @param fileID File identifier
- @param successBlock Block with fileData if the request is succeeded
  @param progressBlock Block with download progress
+ @param successBlock Block with fileData if the request is succeeded
  @param errorBlock Block with NSError instance if the request is failed
  
  @return An instance of CYBRequest for cancel operation mainly
@@ -212,8 +209,8 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  @discussion If download is triggered by 'content-available' push - blocks will not be fired.
  
  @param fileID File identifier
- @param successBlock Block with response and fileData if the request is succeeded
  @param progressBlock Block with download progress
+ @param successBlock Block with file Data if the request is succeeded
  @param errorBlock  Block with NSError instance if the request is failed
  
  @return An instance of CYBRequest for cancel operation mainly
@@ -231,9 +228,9 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  @param fileName Name of the file
  @param contentType Type of the content in mime format
  @param isPublic Blob's visibility
- @param successBlock Block with response if the request is succeeded
  @param progressBlock Block with upload progress
- @param errorBlock Block with response instance if the request is failed
+ @param successBlock Block which is called in case of success response
+ @param errorBlock Block with NSError instance if the request is failed
  
  @return An instance of CYBRequest for cancel operation mainly
  */
@@ -252,9 +249,9 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  @param fileName Name of the file
  @param contentType Type of the content in mime format
  @param isPublic Blob's visibility
- @param successBlock Block with response if the request is succeeded
  @param progressBlock Block with upload progress
- @param errorBlock Block with response instance if the request is failed
+ @param successBlock Block which is called in case of success response
+ @param errorBlock Block with NSError instance if the request is failed
  
  @return An instance of CYBRequest for cancel operation mainly
  */
@@ -270,9 +267,9 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  
  @param data File to be uploaded
  @param file File which needs to be updated
- @param successBlock Block with response if the request is succeeded
  @param progressBlock Block with upload progress
- @param errorBlock Block with response instance if the request is failed
+ @param successBlock Block which is called in case of success response
+ @param errorBlock Block with NSError instance if the request is failed
  
  @return An instance of CYBRequest for cancel operation mainly
  */
@@ -289,8 +286,8 @@ typedef void(^CYBBlobObjectAccessBlock)(CYBBlobObjectAccess *objectAccess);
  
  @param blobID Unique blob identifier, value of ID property of the CYBBlob instance
  @param size Size of uploaded file, in bytes
- @param successBlock Block with response and blob instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
+ @param successBlock Block which is called in case of success response
+ @param errorBlock Block with NSError instance if the request is failed
  
  @return An instance of CYBRequest for cancel operation mainly
  */

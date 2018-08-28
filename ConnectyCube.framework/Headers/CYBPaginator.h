@@ -33,10 +33,31 @@ NS_SWIFT_NAME(Paginator)
  */
 @property (nonatomic, readonly) NSUInteger totalEntries;
 
+/**
+ Paginator with limit
+
+ @param limit Specify the maximum number of objects that will be returned.
+ @return Created CYBPaginator instance
+ */
 + (CYBPaginator *)limit:(NSUInteger)limit;
 
+/**
+ Paginator with limit and skip
+
+ @param limit Specify the maximum number of objects that will be returned.
+ @param skip The number of objects to skip in the results set.
+ @return Created CYBPaginator instance
+ */
 + (CYBPaginator *)limit:(NSUInteger)limit skip:(NSUInteger)skip;
 
+/**
+ Paginator with limit, skip and total entries
+
+ @param limit Specify the maximum number of objects that will be returned.
+ @param skip The number of objects to skip in the results set.
+ @param totalEntries Total entries count
+ @return Created CYBPaginator instance
+ */
 + (CYBPaginator *)limit:(NSUInteger)limit skip:(NSUInteger)skip totalEntries:(NSUInteger)totalEntries;
 
 @end

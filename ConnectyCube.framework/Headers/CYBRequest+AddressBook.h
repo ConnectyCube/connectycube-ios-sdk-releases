@@ -14,12 +14,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/** Methods that provide AddressBook functionality */
 @interface CYBRequest (CYBAddressBook)
 
+/** Block with array of CYBAddressBookContact instances */
 NS_SWIFT_NAME(AdressBookContactsBlock)
 typedef void(^CYBAdressBookContactsBlock)(NSArray<CYBAddressBookContact *> *contacts);
+/** Block with array of CYBAddressBookUpdates instances */
 NS_SWIFT_NAME(AdressBookUpdatesBlock)
 typedef void(^CYBAdressBookUpdatesBlock)(CYBAddressBookUpdates *updates);
+/** Block with array of CYBUser instances */
 NS_SWIFT_NAME(UsersBlock)
 typedef void(^CYBUsersBlock)(NSArray<CYBUser *> *users);
 
@@ -29,7 +33,6 @@ typedef void(^CYBUsersBlock)(NSArray<CYBUser *> *users);
  @param udid User's device identifier. If specified - all operations will be in this context. Max length 64 symbols
  @param successBlock The block to be executed when address book contact items are retrieved
  @param errorBlock The block to be executed when the request is failed
- 
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)addressBookWithUdid:(nullable NSString *)udid
@@ -44,7 +47,6 @@ typedef void(^CYBUsersBlock)(NSArray<CYBUser *> *users);
  @param force Rewrite mode. If set YES all previous contacts for device context will be replaced by new ones
  @param successBlock The block to be executed after successfuly address book updates
  @param errorBlock The block to be executed when the request is failed
- 
  @return An instance of CYBRequest for cancel operation mainly.
  */
 + (CYBRequest *)uploadAddressBookWithUdid:(nullable NSString *)udid
@@ -60,7 +62,6 @@ typedef void(^CYBUsersBlock)(NSArray<CYBUser *> *users);
  @param compact if YES - server will return only `id` and `phone` fields of User. Otherwise - all User's fields will be returned
  @param successBlock The block to be executed when registered users are retrieved
  @param errorBlock The block to be executed when the request is failed
- 
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)registeredUsersFromAddressBookWithUdid:(nullable NSString *)udid

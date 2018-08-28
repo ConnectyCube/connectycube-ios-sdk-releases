@@ -11,12 +11,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class CYBRequest;
 
+/** Block with NSURLSessionDataTask instance */
 NS_SWIFT_NAME(TaskBlock)
 typedef void(^CYBTaskBlock)(NSURLSessionDataTask *task);
+
+/** Block with NSURLSessionDataTask and NSData instances */
 NS_SWIFT_NAME(TaskDataBlock)
 typedef void(^CYBTaskDataBlock)(NSURLSessionDataTask *task, NSData *responseObject);
+
+/** Block with NSURLSessionDataTask and NSError instances */
 NS_SWIFT_NAME(TaskErrorBlock)
 typedef void(^CYBTaskErrorBlock)(NSURLSessionDataTask * _Nullable task, NSError *error);
+
+/** Block with NSProgress instance */
 NS_SWIFT_NAME(TaskProgressBlock)
 typedef void(^CYBTaskProgressBlock)(NSProgress *downloadProgress);
 
@@ -27,6 +34,9 @@ typedef void(^CYBTaskProgressBlock)(NSProgress *downloadProgress);
 NS_SWIFT_NAME(HTTPClient)
 @interface CYBHTTPClient : NSObject
 
+/**
+ Current NSURLSession
+ */
 @property (readonly, nonatomic) NSURLSession *session;
 
 /**
@@ -34,8 +44,10 @@ NS_SWIFT_NAME(HTTPClient)
  */
 @property (nonatomic, nullable) dispatch_queue_t completionQueue;
 
-// unavailable initializers
-- (instancetype)init NS_UNAVAILABLE;
+/** - init is unavailable */
+- (id)init NS_UNAVAILABLE;
+
+/** + new is unavailable */
 + (instancetype)new NS_UNAVAILABLE;
 
 /**

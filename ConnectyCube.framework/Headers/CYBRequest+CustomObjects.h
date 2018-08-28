@@ -17,15 +17,23 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/** Block with objects count */
 NS_SWIFT_NAME(CountBlock)
 typedef void(^CYBCountBlock)(NSUInteger count);
+
+/** Block with CYBCustomObject instance */
 NS_SWIFT_NAME(CustomObjectBlock)
 typedef void(^CYBCustomObjectBlock)(CYBCustomObject *object);
+
+/** Block with array of CYBCustomObject instances */
 NS_SWIFT_NAME(CustomObjectsBlock)
 typedef void(^CYBCustomObjectsBlock)(NSArray<CYBCustomObject *> *objects);
+
+/** Block with array of CYBCustomObject instances and paginator*/
 NS_SWIFT_NAME(CustomObjectsPageBlock)
 typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CYBPaginator *paginator);
 
+/** Methods that provide CustomObject functionality */
 @interface CYBRequest (CustomObjects)
 
 // MARK: - Get Objects
@@ -35,9 +43,8 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  
  @param className Name of class
  @param ID Identifier of object to be retrieved
- @param successBlock Block with response instance and CYBCustomObject instance if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with CYBCustomObject instance if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)objectWithClassName:(NSString *)className
@@ -50,9 +57,8 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  
  @param className Name of class
  @param IDs Identifiers of objects to be retrieved
- @param successBlock Block with response instance, NSArray of found objects if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with array of CYBCustomObject instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)objectsWithClassName:(NSString *)className
@@ -65,9 +71,8 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  
  @param className Name of class
  @param extendedRequest Extended set of request parameters. `count` parameter is ignored. To receive count use `countObjectsWithClassName:extendedRequest:successBlock:errorBlock:`
- @param successBlock Block with response instance, NSArray of found objects, NSArray of not found objects Ids and CYBPaginator if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with array of CYBCustomObject instances, NSArray of not found objects Ids and CYBPaginator if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)objectsWithClassName:(NSString *)className
@@ -85,9 +90,8 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  @param fieldName Required. Field name which will be used for calculation
  @param groupFieldName Required. Field name for group
  @param extendedRequest Optional. Extended set of request parameters. `count` parameter is ignored. To receive count use `countObjectsWithClassName:extendedRequest:successBlock:errorBlock:`
- @param successBlock Block with response instance, NSArray of grouped objects
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with array of grouped objects
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)objectsWithClassName:(NSString *)className
@@ -105,9 +109,8 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  
  @param className Name of class
  @param extendedRequest Extended set of request parameters
- @param successBlock Block with response instance and count of objects if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with count of objects if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 
@@ -122,9 +125,8 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  Create record.
  
  @param object An instance of object that will be created
- @param successBlock Block with response instance and created object if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with created object if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)createObject:(CYBCustomObject *)object
@@ -138,9 +140,8 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  
  @param objects An array of instances of objects that will be created
  @param className Name of class
- @param successBlock Block with response instance, NSArray of created objects if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with array of created objects if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)createObjects:(NSArray<CYBCustomObject *> *)objects
@@ -154,9 +155,8 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  Update record.
  
  @param object An instance of object that will be updated
- @param successBlock Block with response instance and updated object if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with updated object if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)updateObject:(CYBCustomObject *)object
@@ -168,9 +168,8 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  
  @param object An instance of object that will be updated
  @param specialUpdateOperators Special update operators
- @param successBlock Block with response instance and updated object if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with updated object if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)updateObject:(CYBCustomObject *)object
@@ -185,9 +184,8 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  
  @param objects An array of instances of objects that will be updated
  @param className Name of class
- @param successBlock Block with response instance, updated objects and not found objects Ids if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with updated objects and not found objects Ids if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)updateObjects:(NSArray<CYBCustomObject *> *)objects
@@ -201,9 +199,8 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  Delete object by identifier.
  
  @param objectID ID of object to be removed
- @param successBlock Block with response instance if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block which is called in case of success response
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)deleteObjectWithID:(NSString *)objectID
@@ -215,9 +212,8 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  Delete objects by IDs.
  
  @param objectsIDs Array of IDs of objects to be removed
- @param successBlock Block with response instance, NSArray of deleted objects Ids and NSArray of not found objects Ids if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with array of deleted objects Ids and NSArray of not found objects Ids if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)deleteObjectsWithIDs:(NSArray<NSString *> *)objectsIDs
@@ -232,9 +228,8 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  
  @param className Name of class
  @param ID Identifier of object which permissions will be retrieved
- @param successBlock Block with response instance and CYBCustomObjectPermissions instance if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with CYBCustomObjectPermissions instance if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)permissionsForObjectWithClassName:(NSString *)className
@@ -251,10 +246,9 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  @param className Name of class
  @param objectID Identifier of object to which file will be uploaded
  @param fileFieldName Name of file field
- @param successBlock Block with response instance if the request is succeeded
+ @param successBlock Block which is called in case of success response
  @param progressBlock Block with upload/download progress
- @param errorBlock Block with response instance if the request is failed
- 
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)uploadFile:(CYBCustomObjectFile *)file
@@ -271,10 +265,9 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  @param className Name of class
  @param objectID Identifier of object which file will be downloaded
  @param fileFieldName Name of file field
- @param successBlock Block with response instance and NSData instance if the request is succeeded
+ @param successBlock Block with NSData instance if the request is succeeded
  @param progressBlock Block with upload/download progress
- @param errorBlock Block with response instance if the request is failed
- 
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)downloadFileFromClassName:(NSString *)className
@@ -292,10 +285,9 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  @param className Name of class
  @param objectID Identifier of object which file will be downloaded
  @param fileFieldName Name of file field
- @param successBlock Block with response instance and NSData instance if the request is succeeded
+ @param successBlock Block with NSData instance if the request is succeeded
  @param progressBlock Block with upload/download progress
- @param errorBlock Block with response instance if the request is failed
- 
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)backgroundDownloadFileFromClassName:(NSString *)className
@@ -311,9 +303,8 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  @param className Name of class
  @param objectID Identifier of object form which file will be deleted
  @param fileFieldName Name of file field
- @param successBlock Block with response instance if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block which is called in case of success response
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)deleteFileFromClassName:(NSString *)className

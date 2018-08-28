@@ -19,17 +19,17 @@ NS_SWIFT_NAME(User)
 /**
  The ID of the user.
  */
-@property (nonatomic) NSUInteger ID;
+@property (nonatomic, assign) NSUInteger ID;
 
 /**
  The Date and time when the user was created.
  */
-@property (nonatomic) NSDate *createdAt;
+@property (nonatomic, strong, nullable) NSDate *createdAt;
 
 /**
  The Date and time when the user was updated.
  */
-@property (nonatomic) NSDate *updatedAt;
+@property (nonatomic, strong, nullable) NSDate *updatedAt;
 
 /**
  ID of User in external system.

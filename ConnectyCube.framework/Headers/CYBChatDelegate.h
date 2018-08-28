@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 @class CYBContactList, CYBChatMessage, CYBPrivacyList, CYBContactListItem;
 
 // MARK: - Manage chat connection callbacks
+
+/** ChatConnectionProtocol definition*/
 NS_SWIFT_NAME(ChatConnectionProtocol)
 @protocol CYBChatConnectionProtocol
 @optional
@@ -59,6 +61,8 @@ NS_SWIFT_NAME(ChatConnectionProtocol)
 @end
 
 // MARK: - Manage chat receive message callback's
+
+/** ChatReceiveMessageProtocol definition*/
 NS_SWIFT_NAME(ChatReceiveMessageProtocol)
 @protocol CYBChatReceiveMessageProtocol
 @optional
@@ -119,6 +123,8 @@ NS_SWIFT_NAME(ChatReceiveMessageProtocol)
 @end
 
 // MARK: - Privacy
+
+/** ChatPrivacyProtocol definition*/
 NS_SWIFT_NAME(ChatPrivacyProtocol)
 @protocol CYBChatPrivacyProtocol
 @optional
@@ -195,6 +201,8 @@ NS_SWIFT_NAME(ChatPrivacyProtocol)
 @end
 
 // MARK: - Manage contact list callbacks's
+
+/** ChatContactListProtocol definition*/
 NS_SWIFT_NAME(ChatContactListProtocol)
 @protocol CYBChatContactListProtocol
 @optional
@@ -247,6 +255,8 @@ NS_SWIFT_NAME(ChatContactListProtocol)
 @end
 
 // MARK: - Manage received presence callback
+
+/** Chat Presence Protocol */
 NS_SWIFT_NAME(ChatPresenceProtocol)
 @protocol CYBChatPresenceProtocol
 @optional

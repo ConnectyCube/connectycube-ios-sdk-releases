@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 #import <ConnectyCube/CYBRequest.h>
 
-@class CYBPushToken;
 @class CYBSubscription;
 @class CYBEvent;
 @class CYBPaginator;
@@ -16,19 +15,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/** Methods that provide PushNotifications functionality */
 @interface CYBRequest (PushNotifications)
 
 /**
  Create subscription.
  
  @param subscription An instance of CYBSubscription
- @param successBlock Block with response and subscriber instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with CYBSubscription instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)createSubscription:(CYBSubscription *)subscription
-                      successBlock:(nullable void (^)(NSArray<CYBSubscription *> *objects))successBlock
+                      successBlock:(nullable void(^)(NSArray<CYBSubscription *> *objects))successBlock
                         errorBlock:(nullable CYBErrorBlock)errorBlock;
 
 // MARK: - Get Subscriptions
@@ -36,12 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Retrieve all subscriptions.
  
- @param successBlock Block with response and subscribers instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with CYBSubscription instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
-+ (CYBRequest *)subscriptionsWithSuccessBlock:(nullable void (^)(NSArray<CYBSubscription *> *objects))successBlock
++ (CYBRequest *)subscriptionsWithSuccessBlock:(nullable void(^)(NSArray<CYBSubscription *> *objects))successBlock
                                    errorBlock:(nullable CYBErrorBlock)errorBlock;
 
 // MARK: - Delete Subscription with ID
@@ -50,9 +48,8 @@ NS_ASSUME_NONNULL_BEGIN
  Delete subscription with ID.
  
  @param ID An ID of instance of CYBSubscription that will be deleted
- @param successBlock Block with response instance if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block which is called in case of success response
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)deleteSubscriptionWithID:(NSUInteger)ID
@@ -64,9 +61,8 @@ NS_ASSUME_NONNULL_BEGIN
  Create an event.
  
  @param event An instance of CYBEvent to create
- @param successBlock Block with response and event instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with created event(s) instance(s) if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)createEvent:(CYBEvent *)event
@@ -77,11 +73,8 @@ NS_ASSUME_NONNULL_BEGIN
  Retrieve all events which were created by current user (with extended set of pagination parameters).
  
  @param paginator The object to pass a pagination parameters to server. It is useful in implementing paginated results
- @param successBlock Block with response, page, events instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
- @see CYBPaginator
- 
+ @param successBlock Block with paginator, array of CYBEvent instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)eventsWithPaginator:(nullable CYBPaginator *)paginator
@@ -94,9 +87,8 @@ NS_ASSUME_NONNULL_BEGIN
  Get an event with ID.
  
  @param ID ID of CYBEvent to be retrieved
- @param successBlock Block with response and event instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with event instance if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)eventWithID:(NSUInteger)ID
@@ -109,9 +101,8 @@ NS_ASSUME_NONNULL_BEGIN
  Update an event.
  
  @param event An instance of CYBEvent to update
- @param successBlock Block with response and event instances if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block with updated event instance if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)updateEvent:(CYBEvent *)event
@@ -124,9 +115,8 @@ NS_ASSUME_NONNULL_BEGIN
  Get an event with ID.
  
  @param ID ID of CYBEvent to be deleted
- @param successBlock Block with response instance if the request is succeeded
- @param errorBlock Block with response instance if the request is failed
- 
+ @param successBlock Block which is called in case of success response
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly.
  */
 + (CYBRequest *)deleteEventWithID:(NSUInteger)ID
@@ -140,9 +130,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param pushMessage Composed push message to send
  @param usersIDs Users identifiers who will get the message
- @param successBlock Block with response and event instances if the request is succeeded
+ @param successBlock Block  event instance if the request is succeeded
  @param errorBlock Block with error if request failed
- 
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)sendPush:(CYBPushMessage *)pushMessage
@@ -155,9 +144,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param pushMessage Composed push message to send
  @param usersIDs Users identifiers who will get the message
- @param successBlock Block with response and event instances if the request is succeeded
+ @param successBlock Block with CYBEvent instance if the request is succeeded
  @param errorBlock Block with error if request failed
- 
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)sendVoipPush:(CYBPushMessage *)pushMessage
@@ -169,9 +157,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param text composed push notification's text to send
  @param usersIDs users identifiers who will get the message
- @param successBlock Block with response and event instances if the request is succeeded
+ @param successBlock Block with array of CYBEvent instances if the request is succeeded
  @param errorBlock Block with error if request failed
- 
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)sendPushWithText:(NSString *)text
@@ -184,9 +171,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param pushMessage composed push message to send
  @param usersTags users tags who will get the message. Contain a string of users tags divided by comas
- @param successBlock Block with response and event instances if the request is succeeded
+ @param successBlock Block with CYBEvent instance if the request is succeeded
  @param errorBlock Block with error if request failed
- 
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)sendPush:(CYBPushMessage *)pushMessage
@@ -199,9 +185,8 @@ toUsersWithAnyOfTheseTags:(NSString *)usersTags
  
  @param pushMessage composed push message to send
  @param usersTags users tags who will get the message. Contain a string of users tags divided by comas
- @param successBlock Block with response and event instances if the request is succeeded
+ @param successBlock Block with CYBEvent instance if the request is succeeded
  @param errorBlock Block with error if request failed
- 
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)sendVoipPush:(CYBPushMessage *)pushMessage
@@ -214,9 +199,8 @@ toUsersWithAnyOfTheseTags:(NSString *)usersTags
  
  @param text composed push notification's text to send
  @param usersTags users tags who will get the message. Contain a string of users tags divided by comas
- @param successBlock Block with response and token instances if the request is succeeded
- @param errorBlock Block with response instance and CYBEvent instance if request failed
- 
+ @param successBlock Block with Array of CYBEvent instances if the request is succeeded
+ @param errorBlock Block which is called in case of success response
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)sendPushWithText:(NSString *)text
@@ -230,9 +214,8 @@ toUsersWithAnyOfTheseTags:(NSString *)usersTags
  Remove subscription for a specific device. This method remove subscription for a specific device.
  
  @param uniqueDeviceIdentifier The device unique identifier
- @param successBlock Block with response instance if the request is succeeded
+ @param successBlock Block which is called in case of success response
  @param errorBlock Block with error if request failed
- 
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)unregisterSubscriptionForUniqueDeviceIdentifier:(NSString *)uniqueDeviceIdentifier

@@ -7,23 +7,19 @@
 
 #import <Foundation/Foundation.h>
 
-/**
- Logging level.
-
- - CYBLogLevelNothing: Nothing in Log
- - CYBLogLevelErrors: Can see Errors
- - CYBLogLevelWarnings: Can see Warnings
- - CYBLogLevelInfo: Some Information Loggs
- - CYBLogLevelNetwork: Network logs
- - CYBLogLevelDebug: Full debug logs
- */
+/** Logging level. */
 typedef NS_ENUM(NSUInteger, CYBLogLevel) {
-    
-    CYBLogLevelNothing   =      0,
-    CYBLogLevelErrors    = 1 << 0,
-    CYBLogLevelWarnings  = 1 << 1,
-    CYBLogLevelInfo      = 1 << 2,
-    CYBLogLevelNetwork   = 1 << 3,
-    CYBLogLevelDebug     = NSUIntegerMax
+    /** Nothing in Log */
+    CYBLogLevelNothing = 0,
+    /** Can see Errors */
+    CYBLogLevelErrors = 1 << 0,
+    /** Can see Warnings */
+    CYBLogLevelWarnings = 1 << 1,
+    /** Some Information Loggs */
+    CYBLogLevelInfo = 1 << 2,
+    /** Network logs */
+    CYBLogLevelNetwork = 1 << 3,
+    /** Full debug logs */
+    CYBLogLevelDebug = NSUIntegerMax
     
 } NS_SWIFT_NAME(LogLevel);

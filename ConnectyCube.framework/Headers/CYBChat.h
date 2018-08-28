@@ -60,8 +60,10 @@ NS_SWIFT_NAME(Chat)
  */
 @property (nonatomic, readonly, copy, nullable) NSString *currentResource;
 
-// unavailable
+/** - init is unavailable */
 - (id)init NS_UNAVAILABLE;
+
+/** + new is unavailable */
 + (instancetype)new NS_UNAVAILABLE;
 
 // MARK: - Multicast Delegate
@@ -94,10 +96,9 @@ NS_SWIFT_NAME(Chat)
 
 @end
 
-/**
- Methods that provide connection to the chat.
- */
 // MARK: - Connection
+
+/** Methods that provide connection to the chat. */
 @interface CYBChat(Connection)
 
 /**
@@ -142,6 +143,8 @@ NS_SWIFT_NAME(Chat)
 
 // MARK: User status
 
+/** Method that provide send presence with status */
+
 @interface CYBChat(UserStatus)
 
 /**
@@ -154,6 +157,10 @@ NS_SWIFT_NAME(Chat)
 - (BOOL)sendPresenceWithStatus:(NSString *)status;
 
 @end
+
+// MARK: Message status
+
+/** Methods that provide read and delivered statuses */
 
 @interface CYBChat(MessagesStatus)
 
@@ -176,6 +183,8 @@ NS_SWIFT_NAME(Chat)
 @end
 
 // MARK: - Privacy
+
+/** Methods that provide privacy list functionality */
 
 @interface CYBChat(Privacy)
 
@@ -226,6 +235,7 @@ NS_SWIFT_NAME(Chat)
 
 // MARK: - System Messages
 
+/** Method that provide send system message */
 @interface CYBChat(SystemMessage)
 
 /**
@@ -240,6 +250,7 @@ NS_SWIFT_NAME(Chat)
 
 // MARK: - Last Activity
 
+/** Methods that provide last activity */
 @interface CYBChat(LastActivity)
 
 /**
@@ -265,6 +276,7 @@ NS_SWIFT_NAME(Chat)
 
 // MARK: - Send pings to the server or a userID
 
+/** Methods that provide ping functionality */
 @interface CYBChat(Ping)
 
 /**
@@ -307,6 +319,7 @@ NS_SWIFT_NAME(Chat)
 
 // MARK: - Contact list
 
+/** Methods that provides contact list functionality */
 @interface CYBChat(ContactList)
 /**
  After establishing a session, a client SHOULD send initial presence to the server in order to signal its availability for communications.

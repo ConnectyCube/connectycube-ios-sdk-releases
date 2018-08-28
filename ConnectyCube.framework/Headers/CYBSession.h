@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-// Posted immediately after logout from connectycube and session destruction
+/** Posted immediately after logout from connectycube and session destruction */
 FOUNDATION_EXPORT NSNotificationName const kCYBLogoutNotification NS_SWIFT_NAME(LogoutNotification);
 
 /**
@@ -22,19 +22,13 @@ FOUNDATION_EXPORT NSNotificationName const kCYBLogoutNotification NS_SWIFT_NAME(
 NS_SWIFT_NAME(Session)
 @interface CYBSession : NSObject <NSSecureCoding>
 
-/**
- The current session instance.
- */
+/** The current session instance. */
 @property (nonatomic, strong, readonly, class) CYBSession *currentSession;
 
-/**
- Session user.
- */
+/** Session user. */
 @property (nonatomic, readonly, copy, nullable) CYBUser *currentUser;
 
-/**
- Returns YES if token has expired.
- */
+/** Returns YES if token has expired. */
 @property (nonatomic, readonly) BOOL tokenHasExpired;
 
 /**
@@ -44,18 +38,15 @@ NS_SWIFT_NAME(Session)
  */
 @property (nonatomic, readonly) NSUInteger currentUserID;
 
-/**
- Session details.
- */
+/** Session details. */
 @property (nonatomic, readonly, nullable) CYBSessionDetails *sessionDetails;
 
-/**
- Session expiration date.
- */
+/** Session expiration date. */
 @property (nonatomic, readonly, nullable) NSDate *sessionExpirationDate;
 
 @end
 
+/** Methods that provide manual session management */
 @interface CYBSession (ManualSession)
 
 /**
