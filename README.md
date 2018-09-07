@@ -10,6 +10,8 @@ This repository contains releases of the iOS SDK for interacting with the Connec
 
 It provides a simple interface to the messaging, video calling (WebRTC), push notifications, users management and cloud files storage capabilities provided by the platform. 
 
+[Getting Started with ConnectyCube iOS SDK](https://developers.connectycube.com/ios/)
+
 # Installation
 
 The ConnectyCube iOS SDK can be installed directly into your application by adding sdk libraries via CocoaPods.
