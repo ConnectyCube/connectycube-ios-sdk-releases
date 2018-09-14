@@ -11,6 +11,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, CYBErrorCode) {
+    
+    CYBErrorCodeCancelled = NSURLErrorCancelled,
+    CYBErrorCodeUnknown = -1,
+    CYBErrorCodeAccepted = 202,
+    CYBErrorCodeCreated = 201,
+    CYBErrorCodeForbidden = 403,
+    CYBErrorCodeNotFound = 404,
+    CYBErrorCodeOK = 200,
+    CYBErrorCodeBadRequest = 400,
+    CYBErrorCodeServerError = 500,
+    CYBErrorCodeUnAuthorized = 401,
+    CYBErrorCodeValidationFailed = 422
+} NS_SWIFT_NAME(ErrorCode);
+
 /** Block with progress */
 NS_SWIFT_NAME(ProgressBlock)
 typedef void(^CYBProgressBlock)(float progress);
