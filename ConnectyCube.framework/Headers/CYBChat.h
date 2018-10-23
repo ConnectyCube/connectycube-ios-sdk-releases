@@ -329,10 +329,29 @@ NS_SWIFT_NAME(Chat)
 /**
  Add user to contact list request.
  
- @param userID  ID of user which you would like to add to contact list
+ @param userID ID of user which you would like to add to contact list
  @param completion The block which informs whether a request was delivered to server or not. If the request is succeeded error is nil
  */
 - (void)addUserToContactListRequest:(NSUInteger)userID completion:(nullable CYBChatErrorBlock)completion;
+
+/**
+ Add user to contact list request.
+ 
+ @param userID ID of user which you would like to add to contact list
+ @param name User name
+ @param completion The block which informs whether a request was delivered to server or not. If the request is succeeded error is nil
+ */
+- (void)addUserToContactListRequest:(NSUInteger)userID name:(nullable NSString *)name completion:(nullable CYBChatErrorBlock)completion;
+
+
+/**
+ Update user name in contact list
+
+ @param userID ID of user which you would like to change name
+ @param name User name
+ @param completion The block which informs whether a request was delivered to server or not. If the request is succeeded error is nil
+ */
+- (void)updateUserNameInContactList:(NSUInteger)userID name:(NSString *)name completion:(nullable CYBChatErrorBlock)completion;
 
 /**
  Remove user from contact list.

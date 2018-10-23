@@ -12,27 +12,16 @@ NS_ASSUME_NONNULL_BEGIN
 /** Presence subscription state. */
 typedef NS_ENUM(NSUInteger, CYBPresenceSubscriptionState) {
     
-    /**
-     The user does not have a subscription to the contact's presence information,
-     and the contact does not have a subscription to the user's presence information
-     */
+    /** The user does not have a subscription to the contact's presence information, and the contact does not have a subscription to the user's presence information */
     CYBPresenceSubscriptionStateNone = 1,
     
-    /**
-     The user has a subscription to the contact's presence information,
-     but the contact does not have a subscription to the user's presence information
-     */
+    /** The user has a subscription to the contact's presence information, but the contact does not have a subscription to the user's presence information */
     CYBPresenceSubscriptionStateTo = 2,
     
-    /**
-     The contact has a subscription to the user's presence information,
-     but the user does not have a subscription to the contact's presence information
-     */
+    /** The contact has a subscription to the user's presence information, but the user does not have a subscription to the contact's presence information */
     CYBPresenceSubscriptionStateFrom = 3,
     
-    /**
-     Both the user and the contact have subscriptions to each other's presence information
-     */
+    /** Both the user and the contact have subscriptions to each other's presence information */
     CYBPresenceSubscriptionStateBoth = 4
 } NS_SWIFT_NAME(PresenceSubscriptionState);
 
@@ -41,17 +30,16 @@ typedef NS_ENUM(NSUInteger, CYBPresenceSubscriptionState) {
  Represents user's contact list item.
  */
 NS_SWIFT_NAME(ContactListItem)
-@interface CYBContactListItem : NSObject
+@interface CYBContactListItem : NSObject <NSSecureCoding, NSCopying>
 
-/**
- Unique identifier of user.
- */
+/** Unique identifier of user. */
 @property (nonatomic, assign) NSUInteger userID;
 
-/**
- User status (online/offline).
- */
+/** User status (online/offline). */
 @property (nonatomic, assign, getter=isOnline) BOOL online;
+
+/** User name */
+@property (nonatomic, copy) NSString *name;
 
 /**
  User subscription state.

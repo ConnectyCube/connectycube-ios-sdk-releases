@@ -11,7 +11,7 @@
 
 typedef NS_ENUM(NSUInteger, CYBChatDialogType) {
     
-    CYBChatDialogTypePublicGroup __deprecated_enum_msg("Deprecated in 1.2") = 1,
+    CYBChatDialogTypeBroadcast = 1,
     CYBChatDialogTypeGroup = 2,
     CYBChatDialogTypePrivate = 3,
     CYBChatDialogTypePublic = 4

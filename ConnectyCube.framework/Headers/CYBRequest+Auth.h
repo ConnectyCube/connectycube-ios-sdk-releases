@@ -119,6 +119,18 @@ typedef void(^CYBUserBlock)(CYBUser *user);
           successBlock:(nullable CYBUserBlock)successBlock
             errorBlock:(nullable CYBErrorBlock)errorBlock;
 
+/**
+ Upgrading Web session token
+
+ @param webToken WebToken obtained from the web.
+ @param successBlock Block which is called in case of success response
+ @param errorBlock Block with NSError instance if the request is failed
+ @return An instance of CYBRequest. Use this instance to cancel the operation
+ */
++ (CYBRequest *)upgradeWebSessionTokenToCurrentUser:(NSString *)webToken
+                                       successBlock:(nullable CYBSuccessBlock)successBlock
+                                         errorBlock:(nullable CYBErrorBlock)errorBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END
