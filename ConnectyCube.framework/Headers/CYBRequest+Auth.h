@@ -9,6 +9,7 @@
 #import <ConnectyCube/CYBRequest.h>
 
 @class CYBUser;
+@class CYBUserSessionDetails;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** Block with CYBUser instance. */
 typedef void(^CYBUserBlock)(CYBUser *user);
+
+/** Block with CYBUser instance. */
+typedef void(^CYBUserSessionsBlock)(NSArray<CYBUserSessionDetails *> *sesionsDetails);
 
 // MARK: - App authorization
 
@@ -130,6 +134,36 @@ typedef void(^CYBUserBlock)(CYBUser *user);
 + (CYBRequest *)upgradeWebSessionTokenToCurrentUser:(NSString *)webToken
                                        successBlock:(nullable CYBSuccessBlock)successBlock
                                          errorBlock:(nullable CYBErrorBlock)errorBlock;
+/**
+ Retrieve user sessions
+
+ @param successBlock Block with CYBUserSessionDetails instances if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
+ @return An instance of CYBRequest. Use this instance to cancel the operation
+ */
++ (CYBRequest *)userSessionsWithSuccessBlock:(nullable CYBUserSessionsBlock)successBlock
+                                  errorBlock:(nullable CYBErrorBlock)errorBlock;
+
+/**
+ Delete user session with ID
+
+ @param sessionID Session identifier
+ @param successBlock Block which is called in case of success response
+ @param errorBlock Block with NSError instance if the request is failed
+ @return An instance of CYBRequest. Use this instance to cancel the operation
+ */
++ (CYBRequest *)deleteUserSessionWithID:(NSUInteger)sessionID
+                           successBlock:(nullable CYBSuccessBlock)successBlock
+                             errorBlock:(nullable CYBErrorBlock)errorBlock;
+/**
+ Delete all user sessions except current
+
+ @param successBlock Block which is called in case of success response
+ @param errorBlock Block with NSError instance if the request is failed
+ @return An instance of CYBRequest. Use this instance to cancel the operation
+ */
++ (CYBRequest *)deleteAllUserSessionsExceptCurrentWithSuccessBlock:(nullable CYBSuccessBlock)successBlock
+                                                        errorBlock:(nullable CYBErrorBlock)errorBlock;
 
 @end
 

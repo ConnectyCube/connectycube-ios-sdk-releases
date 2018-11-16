@@ -10,6 +10,7 @@
 @class CYBChatDialog;
 @class CYBPaginator;
 @class CYBChatMessage;
+@class CYBUser;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -36,6 +37,11 @@ typedef void(^CYBChatMessageBlock)(CYBChatMessage *message);
 /** Block with array of chat messages and paginator */
 NS_SWIFT_NAME(ChatMessagesBlock)
 typedef void(^CYBChatMessagesBlock)(NSArray<CYBChatMessage *> *messages,
+                                    CYBPaginator *paginator);
+
+/** Block with array of users and paginator */
+NS_SWIFT_NAME(ChatUsersBlock)
+typedef void(^CYBChatUsersBlock)(NSArray<CYBUser *> *users,
                                     CYBPaginator *paginator);
 
 /** Block with total unread count and dialogs dictionary. */

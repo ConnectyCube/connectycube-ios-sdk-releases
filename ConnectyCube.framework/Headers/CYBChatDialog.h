@@ -147,6 +147,16 @@ NS_SWIFT_NAME(ChatDialog)
 @property (nonatomic, readonly) NSInteger recipientID;
 
 /**
+ The count of occupants (Public dialog only)
+ */
+@property (nonatomic, assign) NSUInteger occupantsCount;
+
+/**
+ The count of views (Public dialog only)
+ */
+@property (nonatomic, assign) NSUInteger viewsCount;
+
+/**
  Called whenever sent message was blocked on server.
  */
 @property (nonatomic, copy, nullable) CYBChatErrorBlock onBlockedMessage;

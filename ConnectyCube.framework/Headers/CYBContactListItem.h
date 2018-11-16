@@ -39,7 +39,7 @@ NS_SWIFT_NAME(ContactListItem)
 @property (nonatomic, assign, getter=isOnline) BOOL online;
 
 /** User name */
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy, nullable) NSString *name;
 
 /**
  User subscription state.

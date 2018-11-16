@@ -101,6 +101,11 @@ NS_SWIFT_NAME(User)
  */
 @property (nonatomic, copy, nullable) NSString *customData;
 
+/**
+ User's avatar
+ */
+@property (nonatomic, copy, nullable) NSString *avatar;
+
 @end
 
 NS_ASSUME_NONNULL_END

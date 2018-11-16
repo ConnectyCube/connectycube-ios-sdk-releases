@@ -74,11 +74,6 @@ NS_SWIFT_NAME(Blob)
 @property (nonatomic, nullable) CYBBlobObjectAccess *blobObjectAccess;
 
 /**
- Coma separated string with file's tags.
- */
-@property (nonatomic, copy, nullable) NSString *tags;
-
-/**
  File's visibility.
  */
 @property (nonatomic) BOOL isPublic;

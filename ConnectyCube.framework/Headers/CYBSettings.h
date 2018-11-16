@@ -97,6 +97,18 @@ NS_SWIFT_NAME(Settings)
 
 @end
 
+@interface CYBSettings (CYBContactList)
+
+/**
+ Use mutual subscription for ContactList
+ 
+ @remark The default value is YES
+ */
+@property (nonatomic, class) BOOL useMutualSubscriptionForContactList;
+
+@end
+
+
 // MARK: Chat settings
 
 /** Chat settings */

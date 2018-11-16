@@ -88,7 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)subscribeToPublicDialogWithID:(NSString *)dialogID
-                                 successBlock:(nullable CYBSuccessBlock)successBlock
+                                 successBlock:(nullable CYBChatDialogBlock)successBlock
                                    errorBlock:(nullable CYBErrorBlock)errorBlock;
 
 
@@ -279,7 +279,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param dialogID Dialog ID
  @param successBlock Block with current status of notifications settings
- @param errorBlock errorBlock Block with NSError instance if the request is failed
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)notificationsSettingsForDialogID:(NSString *)dialogID
@@ -296,13 +296,28 @@ NS_ASSUME_NONNULL_BEGIN
  @param dialogID Dialog ID
  @param enable YES / NO
  @param successBlock Block with current status of notifications settings
- @param errorBlock errorBlock Block with NSError instance if the request is failed
+ @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)updateNotificationsSettingsForDialogID:(NSString *)dialogID
                                                 enable:(BOOL)enable
                                           successBlock:(nullable void(^)(BOOL enabled))successBlock
                                             errorBlock:(nullable CYBErrorBlock)errorBlock;
+
+/**
+ Retrieving occupants of public chat dialog.
+
+ @param dialogID Public dialog identifier
+ @param paginator The object to pass a pagination parameters to server. It is useful in implementing paginated results
+ @param successBlock Block with array of occupants (users) and paginator if the request is succeeded
+ @param errorBlock  Block with NSError instance if the request is failed
+ @return An instance of CYBRequest for cancel operation mainly
+ */
++ (CYBRequest *)occupantsForPublicDialogID:(NSString *)dialogID
+                                 paginator:(nullable CYBPaginator *)paginator
+                              successBlock:(nullable CYBChatUsersBlock)successBlock
+                                errorBlock:(nullable CYBErrorBlock)errorBlock;
+
 @end
 
 // MARK: DEPRECATED

@@ -70,12 +70,14 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  Retrieve objects with extended Request.
  
  @param className Name of class
+ @param paginator The object to pass a pagination parameters to server. It is useful in implementing paginated results
  @param extendedRequest Extended set of request parameters. `count` parameter is ignored. To receive count use `countObjectsWithClassName:extendedRequest:successBlock:errorBlock:`
  @param successBlock Block with array of CYBCustomObject instances, NSArray of not found objects Ids and CYBPaginator if the request is succeeded
  @param errorBlock Block with NSError instance if the request is failed
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)objectsWithClassName:(NSString *)className
+                           paginator:(nullable CYBPaginator *)paginator
                      extendedRequest:(nullable NSMutableDictionary <NSString *, NSString *> *)extendedRequest
                         successBlock:(nullable CYBCustomObjectsPageBlock)successBlock
                           errorBlock:(nullable CYBErrorBlock)errorBlock;
@@ -86,6 +88,7 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  Returns calculated data for specified objects.
 
  @param className Required. Name of class
+ @param paginator The object to pass a pagination parameters to server. It is useful in implementing paginated results
  @param aggregationOperator Required. Maximum, minimum, average or summary
  @param fieldName Required. Field name which will be used for calculation
  @param groupFieldName Required. Field name for group
@@ -95,6 +98,7 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
  @return An instance of CYBRequest for cancel operation mainly
  */
 + (CYBRequest *)objectsWithClassName:(NSString *)className
+                           paginator:(nullable CYBPaginator *)paginator
                  aggregationOperator:(CYBCustomObjectAggregationOperator)aggregationOperator
                         forFieldName:(NSString *)fieldName
                     groupByFieldName:(NSString *)groupFieldName
@@ -312,6 +316,46 @@ typedef void(^CYBCustomObjectsPageBlock)(NSArray<CYBCustomObject *> *objects, CY
                           fileFieldName:(NSString *)fileFieldName
                            successBlock:(nullable CYBSuccessBlock)successBlock
                              errorBlock:(nullable CYBErrorBlock)errorBlock;
+
+@end
+
+@interface CYBRequest (CustomObjectsDeprecated)
+/**
+ Retrieve objects with extended Request.
+ 
+ @param className Name of class
+ @param extendedRequest Extended set of request parameters. `count` parameter is ignored. To receive count use `countObjectsWithClassName:extendedRequest:successBlock:errorBlock:`
+ @param successBlock Block with array of CYBCustomObject instances, NSArray of not found objects Ids and CYBPaginator if the request is succeeded
+ @param errorBlock Block with NSError instance if the request is failed
+ @warning Deprecated in 1.4. Use objectsWithClassName:paginator:extendedRequest:successBlock:errorBlock:
+ @return An instance of CYBRequest for cancel operation mainly
+ */
++ (CYBRequest *)objectsWithClassName:(NSString *)className
+                     extendedRequest:(nullable NSMutableDictionary <NSString *, NSString *> *)extendedRequest
+                        successBlock:(nullable CYBCustomObjectsPageBlock)successBlock
+                          errorBlock:(nullable CYBErrorBlock)errorBlock
+DEPRECATED_MSG_ATTRIBUTE("Deprecated in 1.4. Use objectsWithClassName:paginator:extendedRequest:successBlock:errorBlock:.");
+
+/**
+ Returns calculated data for specified objects.
+ 
+ @param className Required. Name of class
+ @param aggregationOperator Required. Maximum, minimum, average or summary
+ @param fieldName Required. Field name which will be used for calculation
+ @param groupFieldName Required. Field name for group
+ @param extendedRequest Optional. Extended set of request parameters. `count` parameter is ignored. To receive count use `countObjectsWithClassName:extendedRequest:successBlock:errorBlock:`
+ @param successBlock Block with array of grouped objects
+ @param errorBlock Block with NSError instance if the request is failed
+ @return An instance of CYBRequest for cancel operation mainly
+ */
++ (CYBRequest *)objectsWithClassName:(NSString *)className
+                 aggregationOperator:(CYBCustomObjectAggregationOperator)aggregationOperator
+                        forFieldName:(NSString *)fieldName
+                    groupByFieldName:(NSString *)groupFieldName
+                     extendedRequest:(nullable NSMutableDictionary<NSString *, NSString *> *)extendedRequest
+                        successBlock:(nullable CYBCustomObjectsPageBlock)successBlock
+                          errorBlock:(nullable CYBErrorBlock)errorBlock
+DEPRECATED_MSG_ATTRIBUTE("Deprecated in 1.4. Use objectsWithClassName:paginator:extendedRequest:successBlock:errorBlock:.");
 
 @end
 
