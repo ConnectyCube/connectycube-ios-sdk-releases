@@ -117,7 +117,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (CYBRequest *)addAdminsToDialogWithID:(NSString *)dialogID
                           adminsUserIDs:(NSArray<NSNumber *> *)adminsUserIDs
-                           successBlock:(nullable CYBSuccessBlock)successBlock
+                           successBlock:(nullable CYBChatDialogBlock)successBlock
                              errorBlock:(nullable CYBErrorBlock)errorBlock;
 
 /**
@@ -131,7 +131,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (CYBRequest *)removeAdminsFromDialogWithID:(NSString *)dialogID
                                adminsUserIDs:(NSArray<NSNumber *> *)adminsUserIDs
-                                successBlock:(nullable CYBSuccessBlock)successBlock
+                                successBlock:(nullable CYBChatDialogBlock)successBlock
                                   errorBlock:(nullable CYBErrorBlock)errorBlock;
 
 // MARK: Retrieve messages
