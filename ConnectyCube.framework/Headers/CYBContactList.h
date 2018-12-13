@@ -15,17 +15,17 @@ NS_ASSUME_NONNULL_BEGIN
  Represents user's contact list.
  */
 NS_SWIFT_NAME(ContactList)
-@interface CYBContactList : NSObject
+@interface CYBContactList : NSObject<NSSecureCoding, NSCopying>
 
 /**
  Current contacts.
  */
-@property (nonatomic, readonly, nullable) NSArray<CYBContactListItem *> *contacts;
+@property (nonatomic, copy, readonly) NSArray<CYBContactListItem *> *contacts;
 
 /**
  Your requests which pending approval.
  */
-@property (nonatomic, readonly, nullable) NSArray<CYBContactListItem *> *pendingApproval;
+@property (nonatomic, copy, readonly) NSArray<CYBContactListItem *> *pendingApproval;
 
 @end
 
