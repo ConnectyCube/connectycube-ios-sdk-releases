@@ -2,7 +2,7 @@
 //  ConnectyCube.h
 //  ConnectyCube
 //
-//  Copyright © 2018 ConnectyCube. All rights reserved.
+//  Copyright © 2019 ConnectyCube. All rights reserved.
 //
 
 #import <ConnectyCube/CYBAddressBookContact.h>
@@ -57,5 +57,5 @@
 #import <ConnectyCube/CYBUpdateUserParameters.h>
 #import <ConnectyCube/CYBUser.h>
 
-/// Framework version 1.6.2
+/// Framework version 1.7.0
 FOUNDATION_EXPORT NSString * const ConnectyCubeVersion;
