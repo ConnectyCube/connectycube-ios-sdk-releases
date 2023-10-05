@@ -1,0 +1,8 @@
+framework module ConnectyCube {
+    umbrella header "ConnectyCube.h"
+
+    export *
+    module * { export * }
+
+    use Foundation
+}
