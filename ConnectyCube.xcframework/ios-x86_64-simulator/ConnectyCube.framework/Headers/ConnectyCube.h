@@ -411,6 +411,13 @@ __attribute__((swift_name("ConnectyCube")))
  * @note This method converts instances of Exception to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
+- (void)createSessionUsingSocialProviderSocialProvider:(NSString *)socialProvider accessToken:(NSString *)accessToken accessTokenSecret:(NSString * _Nullable)accessTokenSecret completionHandler:(void (^)(ConnectyCubeConnectycubeSession * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("createSessionUsingSocialProvider(socialProvider:accessToken:accessTokenSecret:completionHandler:)")));
+- (void)createSessionUsingSocialProviderSocialProvider:(NSString *)socialProvider accessToken:(NSString *)accessToken accessTokenSecret:(NSString * _Nullable)accessTokenSecret successCallback:(void (^)(ConnectyCubeConnectycubeSession *))successCallback errorCallback:(void (^)(ConnectyCubeKotlinException *))errorCallback __attribute__((swift_name("createSessionUsingSocialProvider(socialProvider:accessToken:accessTokenSecret:successCallback:errorCallback:)")));
+
+/**
+ * @note This method converts instances of Exception to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
 - (void)createWhiteboardWhiteboard:(ConnectyCubeConnectycubeWhiteboard *)whiteboard completionHandler:(void (^)(ConnectyCubeConnectycubeWhiteboard * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("createWhiteboard(whiteboard:completionHandler:)")));
 - (void)createWhiteboardWhiteboard:(ConnectyCubeConnectycubeWhiteboard *)whiteboard successCallback:(void (^)(ConnectyCubeConnectycubeWhiteboard *))successCallback errorCallback:(void (^)(ConnectyCubeKotlinException *))errorCallback __attribute__((swift_name("createWhiteboard(whiteboard:successCallback:errorCallback:)")));
 
@@ -714,7 +721,8 @@ __attribute__((swift_name("ConnectyCube")))
 */
 - (void)getWhiteboardsChatDialogId:(NSString *)chatDialogId completionHandler:(void (^)(NSArray<ConnectyCubeConnectycubeWhiteboard *> * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("getWhiteboards(chatDialogId:completionHandler:)")));
 - (void)getWhiteboardsChatDialogId:(NSString *)chatDialogId successCallback:(void (^)(NSArray<ConnectyCubeConnectycubeWhiteboard *> *))successCallback errorCallback:(void (^)(ConnectyCubeKotlinException *))errorCallback __attribute__((swift_name("getWhiteboards(chatDialogId:successCallback:errorCallback:)")));
-- (void)doInitApplicationId:(NSString *)applicationId authorizationKey:(NSString *)authorizationKey authorizationSecret:(NSString *)authorizationSecret connectycubeConfig:(ConnectyCubeConnectycubeConfig * _Nullable)connectycubeConfig __attribute__((swift_name("doInit(applicationId:authorizationKey:authorizationSecret:connectycubeConfig:)")));
+- (void)doInitApplicationId:(NSString *)applicationId authorizationKey:(NSString *)authorizationKey connectycubeConfig:(ConnectyCubeConnectycubeConfig * _Nullable)connectycubeConfig __attribute__((swift_name("doInit(applicationId:authorizationKey:connectycubeConfig:)")));
+- (void)doInitApplicationId:(NSString *)applicationId authorizationKey:(NSString *)authorizationKey authorizationSecret:(NSString *)authorizationSecret connectycubeConfig:(ConnectyCubeConnectycubeConfig * _Nullable)connectycubeConfig __attribute__((swift_name("doInit(applicationId:authorizationKey:authorizationSecret:connectycubeConfig:)"))) __attribute__((deprecated("authorizationSecret will be removed in the next releases")));
 
 /**
  * @note This method converts instances of Exception to errors.
@@ -741,36 +749,36 @@ __attribute__((swift_name("ConnectyCube")))
  * @note This method converts instances of Exception to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
-- (void)signInUser:(ConnectyCubeConnectycubeUser *)user completionHandler:(void (^)(ConnectyCubeConnectycubeUser * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("signIn(user:completionHandler:)")));
-- (void)signInUser:(ConnectyCubeConnectycubeUser *)user successCallback:(void (^)(ConnectyCubeConnectycubeUser *))successCallback errorCallback:(void (^)(ConnectyCubeKotlinException *))errorCallback __attribute__((swift_name("signIn(user:successCallback:errorCallback:)")));
+- (void)signInUser:(ConnectyCubeConnectycubeUser *)user completionHandler:(void (^)(ConnectyCubeConnectycubeUser * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("signIn(user:completionHandler:)"))) __attribute__((deprecated("signIn will be removed in the next releases")));
+- (void)signInUser:(ConnectyCubeConnectycubeUser *)user successCallback:(void (^)(ConnectyCubeConnectycubeUser *))successCallback errorCallback:(void (^)(ConnectyCubeKotlinException *))errorCallback __attribute__((swift_name("signIn(user:successCallback:errorCallback:)"))) __attribute__((deprecated("signIn will be removed in the next releases")));
 
 /**
  * @note This method converts instances of Exception to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
-- (void)signInUsingFirebaseEmailProjectId:(NSString *)projectId accessToken:(NSString *)accessToken completionHandler:(void (^)(ConnectyCubeConnectycubeUser * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("signInUsingFirebaseEmail(projectId:accessToken:completionHandler:)")));
-- (void)signInUsingFirebaseEmailProjectId:(NSString *)projectId accessToken:(NSString *)accessToken successCallback:(void (^)(ConnectyCubeConnectycubeUser *))successCallback errorCallback:(void (^)(ConnectyCubeKotlinException *))errorCallback __attribute__((swift_name("signInUsingFirebaseEmail(projectId:accessToken:successCallback:errorCallback:)")));
+- (void)signInUsingFirebaseEmailProjectId:(NSString *)projectId accessToken:(NSString *)accessToken completionHandler:(void (^)(ConnectyCubeConnectycubeUser * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("signInUsingFirebaseEmail(projectId:accessToken:completionHandler:)"))) __attribute__((deprecated("signInUsingFirebaseEmail will be removed in the next releases")));
+- (void)signInUsingFirebaseEmailProjectId:(NSString *)projectId accessToken:(NSString *)accessToken successCallback:(void (^)(ConnectyCubeConnectycubeUser *))successCallback errorCallback:(void (^)(ConnectyCubeKotlinException *))errorCallback __attribute__((swift_name("signInUsingFirebaseEmail(projectId:accessToken:successCallback:errorCallback:)"))) __attribute__((deprecated("signInUsingFirebaseEmail will be removed in the next releases")));
 
 /**
  * @note This method converts instances of Exception to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
-- (void)signInUsingFirebasePhoneProjectId:(NSString *)projectId accessToken:(NSString *)accessToken completionHandler:(void (^)(ConnectyCubeConnectycubeUser * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("signInUsingFirebasePhone(projectId:accessToken:completionHandler:)")));
-- (void)signInUsingFirebasePhoneProjectId:(NSString *)projectId accessToken:(NSString *)accessToken successCallback:(void (^)(ConnectyCubeConnectycubeUser *))successCallback errorCallback:(void (^)(ConnectyCubeKotlinException *))errorCallback __attribute__((swift_name("signInUsingFirebasePhone(projectId:accessToken:successCallback:errorCallback:)")));
+- (void)signInUsingFirebasePhoneProjectId:(NSString *)projectId accessToken:(NSString *)accessToken completionHandler:(void (^)(ConnectyCubeConnectycubeUser * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("signInUsingFirebasePhone(projectId:accessToken:completionHandler:)"))) __attribute__((deprecated("signInUsingFirebasePhone will be removed in the next releases")));
+- (void)signInUsingFirebasePhoneProjectId:(NSString *)projectId accessToken:(NSString *)accessToken successCallback:(void (^)(ConnectyCubeConnectycubeUser *))successCallback errorCallback:(void (^)(ConnectyCubeKotlinException *))errorCallback __attribute__((swift_name("signInUsingFirebasePhone(projectId:accessToken:successCallback:errorCallback:)"))) __attribute__((deprecated("signInUsingFirebasePhone will be removed in the next releases")));
 
 /**
  * @note This method converts instances of Exception to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
-- (void)signInUsingSocialProviderSocialProvider:(NSString *)socialProvider accessToken:(NSString *)accessToken accessTokenSecret:(NSString * _Nullable)accessTokenSecret completionHandler:(void (^)(ConnectyCubeConnectycubeUser * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("signInUsingSocialProvider(socialProvider:accessToken:accessTokenSecret:completionHandler:)")));
-- (void)signInUsingSocialProviderSocialProvider:(NSString *)socialProvider accessToken:(NSString *)accessToken accessTokenSecret:(NSString * _Nullable)accessTokenSecret successCallback:(void (^)(ConnectyCubeConnectycubeUser *))successCallback errorCallback:(void (^)(ConnectyCubeKotlinException *))errorCallback __attribute__((swift_name("signInUsingSocialProvider(socialProvider:accessToken:accessTokenSecret:successCallback:errorCallback:)")));
+- (void)signInUsingSocialProviderSocialProvider:(NSString *)socialProvider accessToken:(NSString *)accessToken accessTokenSecret:(NSString * _Nullable)accessTokenSecret completionHandler:(void (^)(ConnectyCubeConnectycubeUser * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("signInUsingSocialProvider(socialProvider:accessToken:accessTokenSecret:completionHandler:)"))) __attribute__((deprecated("signInUsingSocialProvider will be removed in the next releases")));
+- (void)signInUsingSocialProviderSocialProvider:(NSString *)socialProvider accessToken:(NSString *)accessToken accessTokenSecret:(NSString * _Nullable)accessTokenSecret successCallback:(void (^)(ConnectyCubeConnectycubeUser *))successCallback errorCallback:(void (^)(ConnectyCubeKotlinException *))errorCallback __attribute__((swift_name("signInUsingSocialProvider(socialProvider:accessToken:accessTokenSecret:successCallback:errorCallback:)"))) __attribute__((deprecated("signInUsingSocialProvider will be removed in the next releases")));
 
 /**
  * @note This method converts instances of Exception to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
-- (void)signOutWithCompletionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("signOut(completionHandler:)")));
-- (void)signOutSuccessCallback:(void (^)(void))successCallback errorCallback:(void (^)(ConnectyCubeKotlinException *))errorCallback __attribute__((swift_name("signOut(successCallback:errorCallback:)")));
+- (void)signOutWithCompletionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("signOut(completionHandler:)"))) __attribute__((deprecated("signOut will be removed in the next releases")));
+- (void)signOutSuccessCallback:(void (^)(void))successCallback errorCallback:(void (^)(ConnectyCubeKotlinException *))errorCallback __attribute__((swift_name("signOut(successCallback:errorCallback:)"))) __attribute__((deprecated("signOut will be removed in the next releases")));
 
 /**
  * @note This method converts instances of Exception to errors.
@@ -1144,6 +1152,7 @@ __attribute__((swift_name("BaseAuthQuery")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("CreateSessionQuery")))
 @interface ConnectyCubeCreateSessionQuery : ConnectyCubeBaseAuthQuery<ConnectyCubeConnectycubeSession *>
+- (instancetype)initWithProvider:(NSString *)provider args:(ConnectyCubeKotlinArray<NSString *> *)args __attribute__((swift_name("init(provider:args:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithUser:(ConnectyCubeConnectycubeUser * _Nullable)user __attribute__((swift_name("init(user:)"))) __attribute__((objc_designated_initializer));
 - (ConnectyCubeConnectycubeSession *)processResultResponseBody:(NSString *)responseBody jsonParser:(ConnectyCubeKotlinx_serialization_jsonJson *)jsonParser __attribute__((swift_name("processResult(responseBody:jsonParser:)")));
 - (void)setParamsRequest:(ConnectyCubeHTTPRequest *)request __attribute__((swift_name("setParams(request:)")));
@@ -1507,8 +1516,8 @@ __attribute__((swift_name("ConnectycubeSession")))
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) ConnectyCubeInt * _Nullable applicationId __attribute__((swift_name("applicationId")));
-@property (readonly) ConnectyCubeInt * _Nullable nonce __attribute__((swift_name("nonce")));
-@property (readonly) ConnectyCubeInt * _Nullable timestamp __attribute__((swift_name("timestamp")));
+@property (readonly) ConnectyCubeInt * _Nullable nonce __attribute__((swift_name("nonce"))) __attribute__((deprecated("nonce will be removed in the next releases")));
+@property (readonly) ConnectyCubeInt * _Nullable timestamp __attribute__((swift_name("timestamp"))) __attribute__((deprecated("timestamp will be removed in the next releases")));
 @property NSString * _Nullable token __attribute__((swift_name("token")));
 @property ConnectyCubeLong * _Nullable tokenExpirationDate __attribute__((swift_name("tokenExpirationDate")));
 @property ConnectyCubeConnectycubeUser * _Nullable user __attribute__((swift_name("user")));
@@ -1537,7 +1546,7 @@ __attribute__((swift_name("ConnectycubeSettings")))
 @property NSString *apiEndpoint __attribute__((swift_name("apiEndpoint")));
 @property NSString * _Nullable applicationId __attribute__((swift_name("applicationId")));
 @property NSString * _Nullable authorizationKey __attribute__((swift_name("authorizationKey")));
-@property NSString * _Nullable authorizationSecret __attribute__((swift_name("authorizationSecret")));
+@property NSString * _Nullable authorizationSecret __attribute__((swift_name("authorizationSecret"))) __attribute__((deprecated("authorizationSecret will be removed in the next releases")));
 @property NSString *chatDefaultResource __attribute__((swift_name("chatDefaultResource")));
 @property NSString *chatEndpoint __attribute__((swift_name("chatEndpoint")));
 @property BOOL isDebugEnabled __attribute__((swift_name("isDebugEnabled")));
@@ -6298,6 +6307,7 @@ __attribute__((swift_name("ConstsKt")))
 @property (class, readonly) NSString *FIREBASE_PHONE_TOKEN __attribute__((swift_name("FIREBASE_PHONE_TOKEN")));
 @property (class, readonly) NSString *FORCE __attribute__((swift_name("FORCE")));
 @property (class, readonly) NSString *HEADER_API_VERSION __attribute__((swift_name("HEADER_API_VERSION")));
+@property (class, readonly) NSString *HEADER_AUTH_KEY __attribute__((swift_name("HEADER_AUTH_KEY")));
 @property (class, readonly) NSString *HEADER_FRAMEWORK_VERSION __attribute__((swift_name("HEADER_FRAMEWORK_VERSION")));
 @property (class, readonly) NSString *HEADER_FRAMEWORK_VERSION_VALUE_PREFIX __attribute__((swift_name("HEADER_FRAMEWORK_VERSION_VALUE_PREFIX")));
 @property (class, readonly) NSString *HEADER_PATCH __attribute__((swift_name("HEADER_PATCH")));
@@ -6312,7 +6322,6 @@ __attribute__((swift_name("ConstsKt")))
 @property (class, readonly) NSString *MODULE_CALL_NOTIFICATIONS __attribute__((swift_name("MODULE_CALL_NOTIFICATIONS")));
 @property (class, readonly) NSString *MODULE_IDENTIFIER __attribute__((swift_name("MODULE_IDENTIFIER")));
 @property (class, readonly) NSString *MODULE_SYSTEM_NOTIFICATIONS __attribute__((swift_name("MODULE_SYSTEM_NOTIFICATIONS")));
-@property (class, readonly) NSString *NONCE __attribute__((swift_name("NONCE")));
 @property (class, readonly) NSString *NOTIFICATIONS __attribute__((swift_name("NOTIFICATIONS")));
 @property (class, readonly) NSString *OCCUPANTS __attribute__((swift_name("OCCUPANTS")));
 @property (class, readonly) NSString *OFFSET __attribute__((swift_name("OFFSET")));
@@ -6328,11 +6337,9 @@ __attribute__((swift_name("ConstsKt")))
 @property (class, readonly) NSString *REST_API_VERSION __attribute__((swift_name("REST_API_VERSION")));
 @property (class, readonly) NSString *SEARCH_ENDPOINT __attribute__((swift_name("SEARCH_ENDPOINT")));
 @property (class, readonly) NSString *SEARCH_TEXT __attribute__((swift_name("SEARCH_TEXT")));
-@property (class, readonly) NSString *SIGNATURE __attribute__((swift_name("SIGNATURE")));
 @property (class, readonly) NSString *SIGN_IN_ENDPOINT __attribute__((swift_name("SIGN_IN_ENDPOINT")));
 @property (class, readonly) NSString *SUBSCRIBE __attribute__((swift_name("SUBSCRIBE")));
 @property (class, readonly) NSString *SUBSCRIPTIONS_ENDPOINT __attribute__((swift_name("SUBSCRIPTIONS_ENDPOINT")));
-@property (class, readonly) NSString *TIMESTAMP __attribute__((swift_name("TIMESTAMP")));
 @property (class, readonly) NSString *UDID __attribute__((swift_name("UDID")));
 @property (class, readonly) NSString *UNREAD __attribute__((swift_name("UNREAD")));
 @property (class, readonly) NSString *USERS_ENDPOINT __attribute__((swift_name("USERS_ENDPOINT")));
