@@ -4903,6 +4903,7 @@ __attribute__((swift_name("GetMessagesParameters")))
 @property NSArray<ConnectyCubeRequestFilter *> * _Nullable filters __attribute__((swift_name("filters")));
 @property ConnectyCubeInt * _Nullable limit __attribute__((swift_name("limit")));
 @property BOOL markAsRead __attribute__((swift_name("markAsRead")));
+@property BOOL preview __attribute__((swift_name("preview")));
 @property ConnectyCubeInt * _Nullable skip __attribute__((swift_name("skip")));
 @property ConnectyCubeRequestSorter * _Nullable sorter __attribute__((swift_name("sorter")));
 @end
@@ -5095,16 +5096,17 @@ __attribute__((swift_name("ConnectycubeDialog")))
 @interface ConnectyCubeConnectycubeDialog : ConnectyCubeConnectycubeEntity
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (instancetype)initWithType:(int32_t)type dialogId:(NSString * _Nullable)dialogId lastMessage:(NSString * _Nullable)lastMessage lastMessageDateSent:(ConnectyCubeLong * _Nullable)lastMessageDateSent lastMessageUserId:(ConnectyCubeInt * _Nullable)lastMessageUserId lastMessageId:(NSString * _Nullable)lastMessageId photo:(NSString * _Nullable)photo userId:(int32_t)userId roomJid:(NSString * _Nullable)roomJid unreadMessageCount:(ConnectyCubeInt * _Nullable)unreadMessageCount name:(NSString * _Nullable)name occupantsIds:(NSMutableArray<ConnectyCubeInt *> * _Nullable)occupantsIds pinnedMessagesIds:(NSMutableArray<NSString *> * _Nullable)pinnedMessagesIds adminsIds:(NSMutableArray<ConnectyCubeInt *> * _Nullable)adminsIds customData:(ConnectyCubeConnectycubeDialogCustomData * _Nullable)customData dialogDescription:(NSString * _Nullable)dialogDescription occupantsCount:(ConnectyCubeInt * _Nullable)occupantsCount __attribute__((swift_name("init(type:dialogId:lastMessage:lastMessageDateSent:lastMessageUserId:lastMessageId:photo:userId:roomJid:unreadMessageCount:name:occupantsIds:pinnedMessagesIds:adminsIds:customData:dialogDescription:occupantsCount:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithType:(int32_t)type dialogId:(NSString * _Nullable)dialogId lastMessage:(NSString * _Nullable)lastMessage lastMessageDateSent:(ConnectyCubeLong * _Nullable)lastMessageDateSent lastMessageUserId:(ConnectyCubeInt * _Nullable)lastMessageUserId lastMessageId:(NSString * _Nullable)lastMessageId photo:(NSString * _Nullable)photo userId:(int32_t)userId roomJid:(NSString * _Nullable)roomJid unreadMessageCount:(ConnectyCubeInt * _Nullable)unreadMessageCount name:(NSString * _Nullable)name occupantsIds:(NSMutableArray<ConnectyCubeInt *> * _Nullable)occupantsIds pinnedMessagesIds:(NSMutableArray<NSString *> * _Nullable)pinnedMessagesIds adminsIds:(NSMutableArray<ConnectyCubeInt *> * _Nullable)adminsIds customData:(ConnectyCubeConnectycubeDialogCustomData * _Nullable)customData dialogDescription:(NSString * _Nullable)dialogDescription occupantsCount:(ConnectyCubeInt * _Nullable)occupantsCount extensions:(ConnectyCubeMutableDictionary<NSString *, NSString *> * _Nullable)extensions permissions:(ConnectyCubeMutableDictionary<NSString *, ConnectyCubeBoolean *> * _Nullable)permissions __attribute__((swift_name("init(type:dialogId:lastMessage:lastMessageDateSent:lastMessageUserId:lastMessageId:photo:userId:roomJid:unreadMessageCount:name:occupantsIds:pinnedMessagesIds:adminsIds:customData:dialogDescription:occupantsCount:extensions:permissions:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) ConnectyCubeConnectycubeDialogCompanion *companion __attribute__((swift_name("companion")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (int32_t)getRecipientId __attribute__((swift_name("getRecipientId()")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @property NSMutableArray<ConnectyCubeInt *> * _Nullable adminsIds __attribute__((swift_name("adminsIds")));
-@property ConnectyCubeConnectycubeDialogCustomData * _Nullable customData __attribute__((swift_name("customData")));
+@property ConnectyCubeConnectycubeDialogCustomData * _Nullable customData __attribute__((swift_name("customData"))) __attribute__((deprecated("ConnectycubeDialogCustomData will be removed in the next releases")));
 @property (setter=setDescription:) NSString * _Nullable description_ __attribute__((swift_name("description_")));
 @property NSString * _Nullable dialogId __attribute__((swift_name("dialogId")));
+@property ConnectyCubeMutableDictionary<NSString *, NSString *> * _Nullable extensions __attribute__((swift_name("extensions")));
 @property NSString * _Nullable lastMessage __attribute__((swift_name("lastMessage")));
 @property ConnectyCubeLong * _Nullable lastMessageDateSent __attribute__((swift_name("lastMessageDateSent")));
 @property NSString * _Nullable lastMessageId __attribute__((swift_name("lastMessageId")));
@@ -5112,6 +5114,7 @@ __attribute__((swift_name("ConnectycubeDialog")))
 @property NSString * _Nullable name __attribute__((swift_name("name")));
 @property ConnectyCubeInt * _Nullable occupantsCount __attribute__((swift_name("occupantsCount")));
 @property NSMutableArray<ConnectyCubeInt *> * _Nullable occupantsIds __attribute__((swift_name("occupantsIds")));
+@property ConnectyCubeMutableDictionary<NSString *, ConnectyCubeBoolean *> * _Nullable permissions __attribute__((swift_name("permissions")));
 @property NSString * _Nullable photo __attribute__((swift_name("photo")));
 @property NSMutableArray<NSString *> * _Nullable pinnedMessagesIds __attribute__((swift_name("pinnedMessagesIds")));
 @property NSString * _Nullable roomJid __attribute__((swift_name("roomJid")));
@@ -5354,9 +5357,11 @@ __attribute__((swift_name("UpdateDialogParams")))
 @property ConnectyCubeMutableSet<ConnectyCubeInt *> *deleteAdminIds __attribute__((swift_name("deleteAdminIds")));
 @property ConnectyCubeMutableSet<ConnectyCubeInt *> *deleteOccupantIds __attribute__((swift_name("deleteOccupantIds")));
 @property ConnectyCubeMutableSet<NSString *> *deletePinnedMsgIds __attribute__((swift_name("deletePinnedMsgIds")));
+@property ConnectyCubeMutableDictionary<NSString *, NSString *> * _Nullable extensions __attribute__((swift_name("extensions")));
 @property (getter=doNewDescription) NSString * _Nullable newDescription __attribute__((swift_name("newDescription")));
 @property (getter=doNewName) NSString * _Nullable newName __attribute__((swift_name("newName")));
 @property (getter=doNewPhoto) NSString * _Nullable newPhoto __attribute__((swift_name("newPhoto")));
+@property ConnectyCubeMutableDictionary<NSString *, ConnectyCubeBoolean *> * _Nullable permissions __attribute__((swift_name("permissions")));
 @property ConnectyCubeMutableDictionary<NSString *, id> *pullAll __attribute__((swift_name("pullAll")));
 @property ConnectyCubeMutableDictionary<NSString *, id> *pushAll __attribute__((swift_name("pushAll")));
 @end
